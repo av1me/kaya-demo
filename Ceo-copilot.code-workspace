@@ -1,0 +1,13 @@
+{
+	"folders": [
+		{
+			"name": "kaya-ceo-demo-main",
+			"path": "."
+		},
+		{
+			"name": "Kayacopilot",
+			"path": "../../Kayacopilot"
+		}
+	],
+	"settings": {}
+}
