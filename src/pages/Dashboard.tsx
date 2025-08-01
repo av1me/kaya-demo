@@ -15,6 +15,7 @@ import { MockLabfoxAPI as LabfoxAPI, fallbackData, errorMessages } from "@/lib/m
 import { type TeamHealthMetrics } from "@/lib/analytics";
 
 const Dashboard = () => {
+  console.log("📊 Dashboard: Component initializing");
   const navigate = useNavigate();
   const [selectedWeek, setSelectedWeek] = useState(() => startOfWeek(new Date('2025-07-14'), {
     weekStartsOn: 1
@@ -24,38 +25,50 @@ const Dashboard = () => {
 
   // Load team metrics on component mount
   useEffect(() => {
-      const loadTeamMetrics = async () => {
-    setIsLoading(true);
+    console.log("📊 Dashboard: useEffect triggered, selectedWeek:", selectedWeek);
     
-    try {
-      // Use API to get team health metrics
-      const exportPath = '/Users/avinashuddaraju/Downloads/Labfox Slack export Jun 18 2025 - Jul 18 2025';
-      const weekString = `${selectedWeek.getFullYear()}-W${Math.ceil((selectedWeek.getTime() - new Date(selectedWeek.getFullYear(), 0, 1).getTime()) / (7 * 24 * 60 * 60 * 1000))}`;
+    const loadTeamMetrics = async () => {
+      console.log("📊 Dashboard: Starting loadTeamMetrics");
+      setIsLoading(true);
       
-      const response = await LabfoxAPI.getTeamHealth(exportPath, weekString);
-      
-      if (response.success && response.data) {
-        setTeamMetrics(response.data);
-      } else {
-        console.error('API Error:', response.error);
+      try {
+        // Use API to get team health metrics
+        const exportPath = '/Users/avinashuddaraju/Downloads/Labfox Slack export Jun 18 2025 - Jul 18 2025';
+        const weekString = `${selectedWeek.getFullYear()}-W${Math.ceil((selectedWeek.getTime() - new Date(selectedWeek.getFullYear(), 0, 1).getTime()) / (7 * 24 * 60 * 60 * 1000))}`;
+        
+        console.log("📊 Dashboard: Calling LabfoxAPI.getTeamHealth with:", { exportPath, weekString });
+        const response = await LabfoxAPI.getTeamHealth(exportPath, weekString);
+        console.log("📊 Dashboard: API response:", response);
+        
+        if (response.success && response.data) {
+          console.log("📊 Dashboard: Setting team metrics from API");
+          setTeamMetrics(response.data);
+        } else {
+          console.error('📊 Dashboard: API Error:', response.error || 'Unknown API error');
+          // Use fallback data
+          console.log("📊 Dashboard: Using fallback data");
+          setTeamMetrics(fallbackData.teamHealth as TeamHealthMetrics);
+        }
+      } catch (error) {
+        console.error('📊 Dashboard: Error loading team metrics:', error);
         // Use fallback data
-        setTeamMetrics(fallbackData.teamHealth);
+        console.log("📊 Dashboard: Using fallback data due to error");
+        setTeamMetrics(fallbackData.teamHealth as TeamHealthMetrics);
       }
-    } catch (error) {
-      console.error('Error loading team metrics:', error);
-      // Use fallback data
-      setTeamMetrics(fallbackData.teamHealth);
-    }
-    
-    setIsLoading(false);
-  };
+      
+      console.log("📊 Dashboard: Setting isLoading to false");
+      setIsLoading(false);
+    };
 
     loadTeamMetrics();
   }, [selectedWeek]);
 
   const handleLogout = () => {
+    console.log("📊 Dashboard: Logout clicked");
     navigate("/auth");
   };
+
+  console.log("📊 Dashboard: About to render, isLoading:", isLoading, "teamMetrics:", teamMetrics);
 
   return (
     <div className="min-h-screen" style={{ backgroundColor: '#f3f4f9' }}>

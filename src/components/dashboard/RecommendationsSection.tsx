@@ -85,6 +85,28 @@ export const RecommendationsSection = ({ selectedWeek }: RecommendationsSectionP
     }
   };
 
+  // Function to analyze recommendation impact based on team metrics
+  const analyzeRecommendationImpact = (recommendation: any, teamMetrics: TeamHealthMetrics) => {
+    // Default impact analysis
+    const impact = {
+      expectedImprovement: recommendation.description || "Implementation of this recommendation should improve team performance.",
+      successIndicators: recommendation.successIndicators || ["Improved team metrics", "Better collaboration", "Enhanced productivity"],
+      riskFactors: recommendation.riskFactors || ["Initial resistance to change", "Time investment required"],
+      labfoxMetrics: null as any
+    };
+
+    // Add specific metrics analysis based on recommendation type
+    if (recommendation.id === 'focus-time') {
+      impact.labfoxMetrics = {
+        currentValue: `${(teamMetrics.responseTime * 60).toFixed(1)} min avg response`,
+        targetValue: "< 30 min response time",
+        improvement: "50% faster responses"
+      };
+    }
+
+    return impact;
+  };
+
   if (isLoading) {
     return (
       <Card className="h-full">

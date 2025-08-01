@@ -11,17 +11,21 @@ const Auth = () => {
   const [isLoading, setIsLoading] = useState(false);
   const navigate = useNavigate();
   const handleMagicLink = async () => {
+    console.log("🔐 Auth: Starting magic link login");
     setIsLoading(true);
     // Simulate API call
     setTimeout(() => {
+      console.log("🔐 Auth: Magic link complete, navigating to /onboarding");
       setIsLoading(false);
       navigate("/onboarding");
     }, 1500);
   };
   const handlePasswordAuth = async () => {
+    console.log("🔐 Auth: Starting password login");
     setIsLoading(true);
     // Simulate API call
     setTimeout(() => {
+      console.log("🔐 Auth: Password auth complete, navigating to /onboarding");
       setIsLoading(false);
       navigate("/onboarding");
     }, 1000);
