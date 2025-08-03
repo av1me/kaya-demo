@@ -233,7 +233,7 @@ export const mockApiResponses = {
 };
 
 // Mock API class that simulates the real API
-export class MockLabfoxAPI {
+export class MockSlackAPI {
   static async getAvailableWeeks(exportPath: string) {
     return mockApiResponses.getAvailableWeeks();
   }

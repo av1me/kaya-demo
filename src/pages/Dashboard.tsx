@@ -11,7 +11,8 @@ import { NomaAssistant } from "@/components/dashboard/NomaAssistant";
 import { ResearchSummary } from "@/components/dashboard/ResearchSummary";
 import { SettingsDialog } from "@/components/settings/SettingsDialog";
 import { WeekNavigation } from "@/components/dashboard/WeekNavigation";
-import { MockLabfoxAPI as LabfoxAPI, fallbackData, errorMessages } from "@/lib/mockApi";
+import { SlackAPI } from "@/lib/api";
+import { fallbackData, errorMessages } from "@/lib/mockApi";
 import { type TeamHealthMetrics } from "@/lib/analytics";
 
 const Dashboard = () => {
@@ -36,8 +37,8 @@ const Dashboard = () => {
         const exportPath = '/Users/avinashuddaraju/Downloads/Labfox Slack export Jun 18 2025 - Jul 18 2025';
         const weekString = `${selectedWeek.getFullYear()}-W${Math.ceil((selectedWeek.getTime() - new Date(selectedWeek.getFullYear(), 0, 1).getTime()) / (7 * 24 * 60 * 60 * 1000))}`;
         
-        console.log("📊 Dashboard: Calling LabfoxAPI.getTeamHealth with:", { exportPath, weekString });
-        const response = await LabfoxAPI.getTeamHealth(exportPath, weekString);
+        console.log("📊 Dashboard: Calling SlackAPI.getTeamHealth with:", { exportPath, weekString });
+        const response = await SlackAPI.getTeamHealth(exportPath, weekString);
         console.log("📊 Dashboard: API response:", response);
         
         if (response.success && response.data) {

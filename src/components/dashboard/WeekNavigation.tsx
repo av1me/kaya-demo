@@ -5,7 +5,7 @@ import { Button } from "@/components/ui/button";
 import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
-import { MockLabfoxAPI as LabfoxAPI } from "@/lib/mockApi";
+import { SlackAPI } from "@/lib/api";
 
 interface WeekNavigationProps {
   selectedWeek: Date;
@@ -26,7 +26,7 @@ export function WeekNavigation({
       try {
         // Use API to get available weeks
         const exportPath = '/Users/avinashuddaraju/Downloads/Labfox Slack export Jun 18 2025 - Jul 18 2025';
-        const response = await LabfoxAPI.getAvailableWeeks(exportPath);
+        const response = await SlackAPI.getAvailableWeeks(exportPath);
         
         if (response.success && response.data) {
           setAvailableWeeks(response.data);

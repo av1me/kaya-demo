@@ -5,7 +5,7 @@ import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/comp
 import { Play, Pause, Volume2, Calendar, Info } from "lucide-react";
 import { useState, useEffect } from "react";
 import { format, isSameWeek, subWeeks, startOfWeek } from "date-fns";
-import { MockLabfoxAPI as LabfoxAPI } from "@/lib/mockApi";
+import { SlackAPI } from "@/lib/api";
 interface PodcastSectionProps {
   selectedWeek: Date;
   onWeekChange?: (week: Date) => void;
@@ -33,7 +33,7 @@ export const PodcastSection = ({
         const exportPath = '/Users/avinashuddaraju/Downloads/Labfox Slack export Jun 18 2025 - Jul 18 2025';
         const weekString = `${selectedWeek.getFullYear()}-W${Math.ceil((selectedWeek.getTime() - new Date(selectedWeek.getFullYear(), 0, 1).getTime()) / (7 * 24 * 60 * 60 * 1000))}`;
         
-        const response = await LabfoxAPI.getPodcastData(exportPath, weekString);
+        const response = await SlackAPI.getPodcastData(exportPath, weekString);
         if (response.success && response.data) {
           setPodcastData(response.data);
         }

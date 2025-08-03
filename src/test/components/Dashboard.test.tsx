@@ -5,7 +5,7 @@ import Dashboard from '../../pages/Dashboard'
 
 // Mock the API
 vi.mock('@/lib/mockApi', () => ({
-  MockLabfoxAPI: {
+  MockSlackAPI: {
     getTeamHealth: vi.fn().mockResolvedValue({
       success: true,
       data: mockTeamMetrics

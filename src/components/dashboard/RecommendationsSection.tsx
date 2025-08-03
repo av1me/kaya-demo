@@ -15,7 +15,7 @@ import {
   Brain,
   Zap
 } from "lucide-react";
-import { MockLabfoxAPI as LabfoxAPI } from "@/lib/mockApi";
+import { SlackAPI } from "@/lib/api";
 import { type TeamHealthMetrics } from "@/lib/analytics";
 
 interface RecommendationsSectionProps {
@@ -34,24 +34,25 @@ export const RecommendationsSection = ({ selectedWeek }: RecommendationsSectionP
       setIsLoading(true);
       
       try {
-        // Use API to get recommendations data
+        // For now, we'll use a default company ID since we need to get user's companies first
+        const defaultCompanyId = 'default-company-id';
+        
+        // Get team metrics from API (using legacy compatibility method)
         const exportPath = '/Users/avinashuddaraju/Downloads/Labfox Slack export Jun 18 2025 - Jul 18 2025';
         const weekString = `${selectedWeek.getFullYear()}-W${Math.ceil((selectedWeek.getTime() - new Date(selectedWeek.getFullYear(), 0, 1).getTime()) / (7 * 24 * 60 * 60 * 1000))}`;
-        
-        // Get team metrics from API
-        const healthResponse = await LabfoxAPI.getTeamHealth(exportPath, weekString);
+        const healthResponse = await SlackAPI.getTeamHealth(exportPath, weekString);
         if (healthResponse.success && healthResponse.data) {
           setTeamMetrics(healthResponse.data);
         }
         
-        // Get insights from API
-        const insightsResponse = await LabfoxAPI.getInsights(exportPath, weekString);
+        // Get insights from API using export path and week string
+        const insightsResponse = await SlackAPI.getInsights(exportPath, weekString);
         if (insightsResponse.success && insightsResponse.data) {
           setInsights(insightsResponse.data);
         }
         
-        // Get recommendations from API
-        const recommendationsResponse = await LabfoxAPI.getRecommendations(exportPath, weekString);
+        // Get recommendations from API using export path and week string
+        const recommendationsResponse = await SlackAPI.getRecommendations(exportPath, weekString);
         if (recommendationsResponse.success && recommendationsResponse.data) {
           setRecommendations(recommendationsResponse.data);
         }

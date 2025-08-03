@@ -7,7 +7,7 @@ import { TrendingUp, TrendingDown, AlertTriangle, Clock, MessageCircle, Target, 
 import { isSameWeek, startOfWeek } from "date-fns";
 import { useState, useEffect } from "react";
 import { InsightsDetailModal } from "./InsightsDetailModal";
-import { MockLabfoxAPI as LabfoxAPI } from "@/lib/mockApi";
+import { SlackAPI } from "@/lib/api";
 import { type TeamHealthMetrics, type AnalyticsInsight } from "@/lib/analytics";
 
 interface InsightsSectionProps {
@@ -60,18 +60,20 @@ export const InsightsSection = ({
       setIsLoading(true);
       
       try {
-        // Use API to get analytics data
+        // For now, we'll use a default company ID since we need to get user's companies first
+        // In a real implementation, you'd get the current user and their companies
+        const defaultCompanyId = 'default-company-id';
+        
+        // Get team health metrics from API (using legacy compatibility method)
         const exportPath = '/Users/avinashuddaraju/Downloads/Labfox Slack export Jun 18 2025 - Jul 18 2025';
         const weekString = `${selectedWeek.getFullYear()}-W${Math.ceil((selectedWeek.getTime() - new Date(selectedWeek.getFullYear(), 0, 1).getTime()) / (7 * 24 * 60 * 60 * 1000))}`;
-        
-        // Get team health metrics from API
-        const healthResponse = await LabfoxAPI.getTeamHealth(exportPath, weekString);
+        const healthResponse = await SlackAPI.getTeamHealth(exportPath, weekString);
         if (healthResponse.success && healthResponse.data) {
           setTeamMetrics(healthResponse.data);
         }
         
-        // Get insights from API
-        const insightsResponse = await LabfoxAPI.getInsights(exportPath, weekString);
+        // Get insights from API using export path and week string
+        const insightsResponse = await SlackAPI.getInsights(exportPath, weekString);
         if (insightsResponse.success && insightsResponse.data) {
           setInsights(insightsResponse.data);
         }
