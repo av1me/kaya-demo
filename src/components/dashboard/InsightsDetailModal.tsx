@@ -255,51 +255,65 @@ export const InsightsDetailModal = ({
             </CardHeader>
             <CardContent>
               <div className="space-y-4">
-                {insights.map((insight) => (
-                  <div
-                    key={insight.id}
-                    className={`p-4 rounded-lg border ${getSeverityColor(insight.severity)}`}
-                  >
-                    <div className="flex items-start justify-between mb-3">
-                      <div className="flex items-center gap-2">
-                        {getToolIcon(insight.tool)}
-                        <h4 className="font-semibold">{insight.title}</h4>
-                      </div>
-                      <div className="flex items-center gap-2">
-                        {getIcon(insight.trend)}
-                        <Badge variant="outline">
-                          {(insight.confidence * 100).toFixed(0)}% confidence
-                        </Badge>
-                        <Badge 
-                          variant={insight.severity === 'critical' ? 'destructive' : 
-                                  insight.severity === 'warning' ? 'secondary' : 'default'}
-                        >
-                          {insight.severity.toUpperCase()}
-                        </Badge>
-                      </div>
-                    </div>
-                    
-                    <p className="text-sm mb-3 opacity-90">{insight.description}</p>
-                    
-                    <div className="flex items-center justify-between mb-3">
-                      <span className="text-sm font-medium">{insight.metric}</span>
-                      <span className="text-xs text-muted-foreground">{insight.category}</span>
-                    </div>
-
-                    {/* Recommendations */}
-                    <div className="space-y-2">
-                      <h5 className="text-sm font-medium">Recommendations:</h5>
-                      <ul className="space-y-1">
-                        {insight.recommendations.map((rec, index) => (
-                          <li key={index} className="text-sm flex items-start gap-2">
-                            <CheckCircle className="w-3 h-3 text-green-600 mt-0.5 flex-shrink-0" />
-                            {rec}
-                          </li>
-                        ))}
-                      </ul>
-                    </div>
+                {!insights || insights.length === 0 ? (
+                  <div className="text-center py-8 text-muted-foreground">
+                    <Brain className="w-12 h-12 mx-auto mb-4 opacity-50" />
+                    <p className="text-lg font-medium mb-2">No detailed insights available</p>
+                    <p className="text-sm">
+                      Insights will appear here once team communication data is analyzed.
+                    </p>
                   </div>
-                ))}
+                ) : (
+                  insights.map((insight) => (
+                    <div
+                      key={insight.id}
+                      className={`p-4 rounded-lg border ${getSeverityColor(insight.severity)}`}
+                    >
+                      <div className="flex items-start justify-between mb-3">
+                        <div className="flex items-center gap-2">
+                          {getToolIcon(insight.tool)}
+                          <h4 className="font-semibold">{insight.title}</h4>
+                        </div>
+                        <div className="flex items-center gap-2">
+                          {getIcon(insight.trend)}
+                          <Badge variant="outline">
+                            {(insight.confidence * 100).toFixed(0)}% confidence
+                          </Badge>
+                          <Badge
+                            variant={insight.severity === 'critical' ? 'destructive' :
+                                    insight.severity === 'warning' ? 'secondary' : 'default'}
+                          >
+                            {insight.severity.toUpperCase()}
+                          </Badge>
+                        </div>
+                      </div>
+                      
+                      <p className="text-sm mb-3 opacity-90">{insight.description}</p>
+                      
+                      <div className="flex items-center justify-between mb-3">
+                        <span className="text-sm font-medium">{insight.metric}</span>
+                        <span className="text-xs text-muted-foreground">{insight.category}</span>
+                      </div>
+
+                      {/* Recommendations */}
+                      <div className="space-y-2">
+                        <h5 className="text-sm font-medium">Recommendations:</h5>
+                        <ul className="space-y-1">
+                          {insight.recommendations?.map((rec, index) => (
+                            <li key={index} className="text-sm flex items-start gap-2">
+                              <CheckCircle className="w-3 h-3 text-green-600 mt-0.5 flex-shrink-0" />
+                              {rec}
+                            </li>
+                          )) || (
+                            <li className="text-sm text-muted-foreground">
+                              No recommendations available
+                            </li>
+                          )}
+                        </ul>
+                      </div>
+                    </div>
+                  ))
+                )}
               </div>
             </CardContent>
           </Card>
