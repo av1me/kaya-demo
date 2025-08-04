@@ -1,0 +1,52 @@
+[
+    {
+        "user": "U040TMXT4RM",
+        "type": "message",
+        "ts": "1752504394.083979",
+        "client_msg_id": "d08207ff-37b6-442b-87f2-fbe09963e5d8",
+        "text": "<@U02UZPK889Z> continuing my work on user management -- adding company name to user, invite user\nHave some doubts about the rent roll Excel format <@U079XV7CY0M> will sort it out.",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "dc2178d63857",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2023-05-24\/5326151890321_dc2178d63857395c7f7e_72.jpg",
+            "first_name": "Anser",
+            "real_name": "Anser Ali",
+            "display_name": "Anser Ali",
+            "team": "T01GV7EP2VD",
+            "name": "anser7ali",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "8FXjd",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "user",
+                                "user_id": "U02UZPK889Z"
+                            },
+                            {
+                                "type": "text",
+                                "text": " continuing my work on user management -- adding company name to user, invite user\nHave some doubts about the rent roll Excel format "
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U079XV7CY0M"
+                            },
+                            {
+                                "type": "text",
+                                "text": " will sort it out."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

@@ -1,0 +1,662 @@
+[
+    {
+        "subtype": "channel_join",
+        "user": "U08UZQ2FS2X",
+        "text": "<@U08UZQ2FS2X> has joined the channel",
+        "type": "message",
+        "ts": "1751457881.779109"
+    },
+    {
+        "subtype": "channel_join",
+        "user": "U02UZPK889Z",
+        "text": "<@U02UZPK889Z> has joined the channel",
+        "inviter": "U08UZQ2FS2X",
+        "type": "message",
+        "ts": "1751457914.811639"
+    },
+    {
+        "subtype": "channel_join",
+        "user": "U079XV7CY0M",
+        "text": "<@U079XV7CY0M> has joined the channel",
+        "inviter": "U08UZQ2FS2X",
+        "type": "message",
+        "ts": "1751457914.935019"
+    },
+    {
+        "subtype": "channel_join",
+        "user": "U040TMXT4RM",
+        "text": "<@U040TMXT4RM> has joined the channel",
+        "inviter": "U08UZQ2FS2X",
+        "type": "message",
+        "ts": "1751457915.032079"
+    },
+    {
+        "user": "U08UZQ2FS2X",
+        "type": "message",
+        "ts": "1751457982.900439",
+        "client_msg_id": "9e368ded-03a8-4b75-91ce-24fb469d0ed5",
+        "text": "Hi <!channel>, hope you are well.",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "g3c29bf49c79",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/3c29bf49c795101ec1d744064bdbcf46.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-72.png",
+            "first_name": "Pat",
+            "real_name": "Pat",
+            "display_name": "Pat",
+            "team": "T01GV7EP2VD",
+            "name": "pat",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "CVppi",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Hi "
+                            },
+                            {
+                                "type": "broadcast",
+                                "range": "channel"
+                            },
+                            {
+                                "type": "text",
+                                "text": ", hope you are well."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U08UZQ2FS2X",
+        "type": "message",
+        "ts": "1751458041.252209",
+        "client_msg_id": "cf5afb0f-8307-4517-9c8e-3ac18834d29d",
+        "text": "Just an update.\n1. LLP have not confirmed the invite for today.\n2. They requested for this Friday's weekly call to be held on Thursday as Friday is a holiday in the US",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "g3c29bf49c79",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/3c29bf49c795101ec1d744064bdbcf46.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-72.png",
+            "first_name": "Pat",
+            "real_name": "Pat",
+            "display_name": "Pat",
+            "team": "T01GV7EP2VD",
+            "name": "pat",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "mTDqz",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Just an update.\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "LLP have not confirmed the invite for today."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "They requested for this Friday's weekly call to be held on Thursday as Friday is a holiday in the US"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "ordered",
+                        "indent": 0,
+                        "border": 0
+                    }
+                ]
+            }
+        ],
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U079XV7CY0M",
+                    "U02UZPK889Z"
+                ],
+                "count": 2
+            }
+        ]
+    },
+    {
+        "user": "U02UZPK889Z",
+        "type": "message",
+        "ts": "1751463737.055519",
+        "client_msg_id": "006eb301-39d3-469c-bca9-ad71f9b641e8",
+        "text": "Hey <!channel> I may not be able to join scrum stuck in a call. <@U079XV7CY0M> can you please coordinate with shubham on design, get some updates and handle scrum today? I'll catch up with you in sometime.",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "f9c84d9572b2",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2022-07-05\/3762851016516_f9c84d9572b288fbd96e_72.jpg",
+            "first_name": "Dinesh",
+            "real_name": "Dinesh",
+            "display_name": "Dinesh",
+            "team": "T01GV7EP2VD",
+            "name": "dineshnadimpalli.work",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "PaRgW",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Hey "
+                            },
+                            {
+                                "type": "broadcast",
+                                "range": "channel"
+                            },
+                            {
+                                "type": "text",
+                                "text": " I may not be able to join scrum stuck in a call. "
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U079XV7CY0M"
+                            },
+                            {
+                                "type": "text",
+                                "text": " can you please coordinate with shubham on design, get some updates and handle scrum today? I'll catch up with you in sometime."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U079XV7CY0M"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "user": "U08UZQ2FS2X",
+        "type": "message",
+        "ts": "1751464280.471839",
+        "client_msg_id": "6bdf7a39-3e86-48d7-b8df-e78379a386e8",
+        "text": "I am also on a call",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "g3c29bf49c79",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/3c29bf49c795101ec1d744064bdbcf46.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-72.png",
+            "first_name": "Pat",
+            "real_name": "Pat",
+            "display_name": "Pat",
+            "team": "T01GV7EP2VD",
+            "name": "pat",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "o+OM7",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "I am also on a call"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U02UZPK889Z",
+        "type": "message",
+        "ts": "1751465839.085399",
+        "client_msg_id": "7c0c8152-8f8a-4971-8d76-a4d69b38fd5b",
+        "text": "<@U08UZQ2FS2X> let's do this. As we are anyhow meeting the LLP team tomorrow let's cancel today's meet. Let them know the same. By then we should have the pending design work done as well",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "f9c84d9572b2",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2022-07-05\/3762851016516_f9c84d9572b288fbd96e_72.jpg",
+            "first_name": "Dinesh",
+            "real_name": "Dinesh",
+            "display_name": "Dinesh",
+            "team": "T01GV7EP2VD",
+            "name": "dineshnadimpalli.work",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "P+sjm",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "user",
+                                "user_id": "U08UZQ2FS2X"
+                            },
+                            {
+                                "type": "text",
+                                "text": " let's do this. As we are anyhow meeting the LLP team tomorrow let's cancel today's meet. Let them know the same. By then we should have the pending design work done as well"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U02UZPK889Z",
+        "type": "message",
+        "ts": "1751465877.414899",
+        "client_msg_id": "6750fc4c-1c01-4066-8ad8-d5b762cebb91",
+        "text": "and followup with them once if they got a chance to review the designs",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "f9c84d9572b2",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2022-07-05\/3762851016516_f9c84d9572b288fbd96e_72.jpg",
+            "first_name": "Dinesh",
+            "real_name": "Dinesh",
+            "display_name": "Dinesh",
+            "team": "T01GV7EP2VD",
+            "name": "dineshnadimpalli.work",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "HIhXf",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "and followup with them once if they got a chance to review the designs"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U08UZQ2FS2X",
+        "type": "message",
+        "ts": "1751465956.673529",
+        "client_msg_id": "d0030934-e3e7-4bb6-a82a-edd0e5af0bbf",
+        "text": "Okay",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "g3c29bf49c79",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/3c29bf49c795101ec1d744064bdbcf46.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-72.png",
+            "first_name": "Pat",
+            "real_name": "Pat",
+            "display_name": "Pat",
+            "team": "T01GV7EP2VD",
+            "name": "pat",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "HMYXF",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Okay"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U08UZQ2FS2X",
+        "type": "message",
+        "ts": "1751478637.687359",
+        "client_msg_id": "f529a1ce-cd85-4fd8-8893-97fc2c4c2ab9",
+        "text": "Hi <!channel>, our meeting tomorrow is at 11 a.m MDT = which is 1 p.m. EST = which is 10.30 p.m IST",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "g3c29bf49c79",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/3c29bf49c795101ec1d744064bdbcf46.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-72.png",
+            "first_name": "Pat",
+            "real_name": "Pat",
+            "display_name": "Pat",
+            "team": "T01GV7EP2VD",
+            "name": "pat",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "rgzt\/",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Hi "
+                            },
+                            {
+                                "type": "broadcast",
+                                "range": "channel"
+                            },
+                            {
+                                "type": "text",
+                                "text": ", our meeting tomorrow is at 11 a.m MDT = which is 1 p.m. EST = which is 10.30 p.m IST"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U08UZQ2FS2X",
+        "type": "message",
+        "ts": "1751478663.490939",
+        "client_msg_id": "19e4cd9b-5ae1-441d-ba9c-a54fab532e6c",
+        "text": "Apologies for any inconvenience. The client just confirmed that.",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "g3c29bf49c79",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/3c29bf49c795101ec1d744064bdbcf46.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-72.png",
+            "first_name": "Pat",
+            "real_name": "Pat",
+            "display_name": "Pat",
+            "team": "T01GV7EP2VD",
+            "name": "pat",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "K5nLz",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Apologies for any inconvenience. The client just confirmed that."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U079XV7CY0M",
+        "type": "message",
+        "ts": "1751511458.277659",
+        "client_msg_id": "645b9e16-7db6-41cd-a726-1e2e95c96df6",
+        "text": "<@U02UZPK889Z> these access\/info we need from client in addition to the existing ones which they gave to us. Please review and then <@U08UZQ2FS2X> can forward it to the client requesting for the access\n\n1. *Domain Registrar* – Domain setup like Godaddy, Namecheap etc for app domains (e.g., <http:\/\/admin.landlordliabilityprotection.com|admin.landlordliabilityprotection.com>, <http:\/\/app.landlordliabilityprotection.com|app.landlordliabilityprotection.com>).\n2. *Google Cloud Console (GCP)* – Google login (OAuth) setup.\n3. *Supabase* – Database, authentication, and file storage.\n4. *Email Provider* – (Optional) For sending verification and notification emails.\n5. *Branding Assets* – Logo and images for app branding.\n6. *Admin Emails* – Initial admin and manager accounts (e.g., <mailto:admin@landlordliabilityprotection.com|admin@landlordliabilityprotection.com>, <mailto:support@landlordliabilityprotection.com|support@landlordliabilityprotection.com>).\n7. *Existing Data* – (Optional) Sample rent roll files for testing.",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "08c220234596",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2024-06-27\/7343481331284_08c220234596119bf9be_72.jpg",
+            "first_name": "Vivek",
+            "real_name": "Vivek Yaligar",
+            "display_name": "Vvk",
+            "team": "T01GV7EP2VD",
+            "name": "vivek",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "xT81s",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "user",
+                                "user_id": "U02UZPK889Z"
+                            },
+                            {
+                                "type": "text",
+                                "text": " these access\/info we need from client in addition to the existing ones which they gave to us. Please review and then "
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U08UZQ2FS2X"
+                            },
+                            {
+                                "type": "text",
+                                "text": " can forward it to the client requesting for the access\n\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Domain Registrar",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " – Domain setup like Godaddy, Namecheap etc for app domains (e.g., "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "http:\/\/admin.landlordliabilityprotection.com",
+                                        "text": "admin.landlordliabilityprotection.com"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "http:\/\/app.landlordliabilityprotection.com",
+                                        "text": "app.landlordliabilityprotection.com"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ")."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Google Cloud Console (GCP)",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " – Google login (OAuth) setup."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Supabase",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " – Database, authentication, and file storage."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Email Provider",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " – (Optional) For sending verification and notification emails."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Branding Assets",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " – Logo and images for app branding."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Admin Emails",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " – Initial admin and manager accounts (e.g., "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "mailto:admin@landlordliabilityprotection.com",
+                                        "text": "admin@landlordliabilityprotection.com"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ", "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "mailto:support@landlordliabilityprotection.com",
+                                        "text": "support@landlordliabilityprotection.com"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": ")."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Existing Data",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " – (Optional) Sample rent roll files for testing."
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "ordered",
+                        "indent": 0,
+                        "border": 0
+                    }
+                ]
+            }
+        ]
+    }
+]

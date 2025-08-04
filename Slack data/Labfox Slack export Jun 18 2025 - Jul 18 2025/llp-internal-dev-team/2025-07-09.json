@@ -1,0 +1,103 @@
+[
+    {
+        "user": "U079XV7CY0M",
+        "type": "message",
+        "ts": "1752090321.302679",
+        "client_msg_id": "f75a708a-a46b-4435-bcfb-394060f13539",
+        "text": "<@U02UZPK889Z> <@U040TMXT4RM>\n\nLet's use railway and gcp acc from labfox account",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "08c220234596",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2024-06-27\/7343481331284_08c220234596119bf9be_72.jpg",
+            "first_name": "Vivek",
+            "real_name": "Vivek Yaligar",
+            "display_name": "Vvk",
+            "team": "T01GV7EP2VD",
+            "name": "vivek",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "Wor2t",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "user",
+                                "user_id": "U02UZPK889Z"
+                            },
+                            {
+                                "type": "text",
+                                "text": " "
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U040TMXT4RM"
+                            },
+                            {
+                                "type": "text",
+                                "text": "\n\nLet's use railway and gcp acc from labfox account"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U079XV7CY0M",
+        "type": "message",
+        "ts": "1752090365.120989",
+        "client_msg_id": "6a24d3a8-f429-4ff4-a8b4-8190a508e363",
+        "text": "<@U040TMXT4RM> you can create a free account in railway I already exhausted my free trial using my acc",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "08c220234596",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2024-06-27\/7343481331284_08c220234596119bf9be_72.jpg",
+            "first_name": "Vivek",
+            "real_name": "Vivek Yaligar",
+            "display_name": "Vvk",
+            "team": "T01GV7EP2VD",
+            "name": "vivek",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "qFrH2",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "user",
+                                "user_id": "U040TMXT4RM"
+                            },
+                            {
+                                "type": "text",
+                                "text": " you can create a free account in railway I already exhausted my free trial using my acc"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U040TMXT4RM"
+                ],
+                "count": 1
+            }
+        ]
+    }
+]
