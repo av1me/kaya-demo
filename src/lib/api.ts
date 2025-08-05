@@ -1,13 +1,7 @@
 // API endpoints for Slack data fetching
 import { supabase } from './supabaseClient';
-// Slack export Option A parser (Node.js only)
-import {
-  getAvailableWeeks as exportGetWeeks,
-  computeWeeklyMetrics,
-  getInsightsFromMetrics,
-  getRecommendationsFromMetrics,
-  getResearchSummaryFromMetrics,
-} from './slackExport';
+// Note: Node.js-based slackExport functions removed for browser compatibility
+// All Slack processing now uses browser-compatible analytics functions
 // Browser-compatible analytics functions
 import {
   calculateTeamHealthFromRealData,
@@ -373,35 +367,9 @@ export class SlackAPI {
           const teamHealth = await calculateTeamHealthFromRealData(exportPath, weekString);
           return { success: true, data: teamHealth };
         } else {
-          // Use Node.js filesystem functions for absolute paths
-          console.log('📁 Using Node.js filesystem functions');
-          const metrics = computeWeeklyMetrics(exportPath, weekString);
-          // Map to existing shape with sensible defaults
-          const teamHealth = {
-            realTeam: 80,
-            compellingDirection: 80,
-            enablingStructure: 75,
-            supportiveContext: 78,
-            expertCoaching: 72,
-            psychologicalSafety: Math.max(60, 90 - Math.round(metrics.participation.giniCoefficient * 40)),
-            helpSeeking: Math.min(90, 50 + Math.round((metrics.mentionsGraph.edges.length || 0) / 2)),
-            errorReporting: 68,
-            innovationBehavior: 75,
-            responseTime: metrics.responsiveness.avgFirstReplyHours ?? 0,
-            messageFrequency: metrics.activity.totalMessages,
-            collaborationIndex: Math.min(100, 50 + Object.keys(metrics.activity.byChannel).length * 5),
-            networkDensity: Object.keys(metrics.activity.byUser).length > 1
-              ? Math.min(1, metrics.mentionsGraph.edges.length / (Object.keys(metrics.activity.byUser).length ** 2))
-              : 0,
-            centralization: Math.min(1, metrics.participation.giniCoefficient),
-            burnoutRisk: 25,
-            weekendActivity: 15,
-            afterHoursActivity: 20,
-            stressIndicators: metrics.opsAlerts.length > 0 ? 40 : 20,
-            teamStage: 'performing',
-            earlyWarnings: metrics.opsAlerts.length > 0 ? ['Operational alerts detected'] : [],
-            riskLevel: metrics.opsAlerts.length > 0 ? 'medium' : 'low'
-          };
+          // Fallback to browser-compatible functions for absolute paths too
+          console.log('📁 Using browser-compatible analytics functions (fallback)');
+          const teamHealth = await calculateTeamHealthFromRealData(exportPath, weekString);
           return { success: true, data: teamHealth };
         }
       }
@@ -441,25 +409,23 @@ export class SlackAPI {
       if (exportPath) {
         console.log(`🔍 SlackAPI.getAvailableWeeks: Processing path "${exportPath}"`);
         
-        if (this.isWebPath(exportPath)) {
-          // Use browser-compatible analytics functions for web-served paths
-          console.log('📊 Using browser-compatible analytics functions');
-          const weeks = await getAvailableWeeksFromSlackData(exportPath);
-          // Sort descending (latest first) for UI convenience
-          const sorted = weeks.slice().sort((a, b) => (a < b ? 1 : a > b ? -1 : 0));
-          return { success: true, data: sorted };
-        } else {
-          // Use Node.js filesystem functions for absolute paths
-          console.log('📁 Using Node.js filesystem functions');
-          const weeks = exportGetWeeks(exportPath);
-          // Sort descending (latest first) for UI convenience
-          const sorted = weeks.slice().sort((a, b) => (a < b ? 1 : a > b ? -1 : 0));
-          return { success: true, data: sorted };
-        }
+        // Use our enhanced utility functions for better accuracy
+        const { getBrowserCompatibleAvailableWeeks } = await import('./slackDataUtils');
+        const weeks = await getBrowserCompatibleAvailableWeeks();
+        
+        console.log(`📊 Found ${weeks.length} weeks with data:`, weeks);
+        
+        // Sort descending (latest first) for UI convenience
+        const sorted = weeks.slice().sort((a, b) => (a < b ? 1 : a > b ? -1 : 0));
+        return { success: true, data: sorted };
       }
-      const mockWeeks = ['2025-W28', '2025-W27', '2025-W26', '2025-W25'];
-      return { success: true, data: mockWeeks };
+      
+      // Fallback to known weeks based on actual data analysis
+      const fallbackWeeks = ['2025-W29', '2025-W28', '2025-W27', '2025-W26'];
+      console.log('📋 Using fallback weeks:', fallbackWeeks);
+      return { success: true, data: fallbackWeeks };
     } catch (error: any) {
+      console.error('Error in getAvailableWeeks:', error);
       return this.handleError(error, 'getAvailableWeeks');
     }
   }
@@ -486,23 +452,20 @@ export class SlackAPI {
           }));
           return { success: true, data: formattedInsights };
         } else {
-          // Use Node.js filesystem functions for absolute paths
-          console.log('📁 Using Node.js filesystem functions');
-          const metrics = computeWeeklyMetrics(exportPath, weekString);
-          const insights = getInsightsFromMetrics(metrics).map((i, idx) => ({
-            id: `insight-${idx}`,
-            title: i.title,
-            description: i.detail,
-            severity: 'info',
-            confidence: 80,
-            category: 'auto',
-            metrics: {
-              totalMessages: metrics.activity.totalMessages,
-              avgFirstReplyHours: metrics.responsiveness.avgFirstReplyHours,
-              gini: metrics.participation.giniCoefficient,
-            }
+          // Fallback to browser-compatible functions for absolute paths too
+          console.log('📁 Using browser-compatible analytics functions (fallback)');
+          const insights = await generateLabfoxSpecificInsights(exportPath, weekString);
+          const formattedInsights = insights.map((insight, idx) => ({
+            id: insight.id || `insight-${idx}`,
+            title: insight.title,
+            description: insight.description,
+            severity: insight.severity || 'info',
+            confidence: insight.confidence || 80,
+            category: insight.category,
+            tool: insight.tool,
+            metrics: insight.metric ? { [insight.metric.split(' ')[0]]: insight.metric } : {}
           }));
-          return { success: true, data: insights };
+          return { success: true, data: formattedInsights };
         }
       }
       // Fallback to mocks
@@ -555,22 +518,11 @@ export class SlackAPI {
           const recs = generateLabfoxSpecificRecommendations(exportPath, weekString, teamHealth, insights);
           return { success: true, data: recs };
         } else {
-          // Use Node.js filesystem functions for absolute paths
-          console.log('📁 Using Node.js filesystem functions');
-          const metrics = computeWeeklyMetrics(exportPath, weekString);
-          const recs = getRecommendationsFromMetrics(metrics).map((r, idx) => ({
-            id: `rec-${idx}`,
-            title: r.title,
-            description: r.action,
-            priority: 'medium',
-            impact: 'Medium',
-            timeframe: '1-2 weeks',
-            science: 'Derived from team communication signals in Slack export.',
-            implementation: [],
-            successIndicators: [],
-            riskFactors: [],
-            learnMore: []
-          }));
+          // Fallback to browser-compatible functions for absolute paths too
+          console.log('📁 Using browser-compatible analytics functions (fallback)');
+          const teamHealth = await calculateTeamHealthFromRealData(exportPath, weekString);
+          const insights = await generateLabfoxSpecificInsights(exportPath, weekString);
+          const recs = generateLabfoxSpecificRecommendations(exportPath, weekString, teamHealth, insights);
           return { success: true, data: recs };
         }
       }
@@ -604,11 +556,9 @@ export class SlackAPI {
   static async getPodcastData(exportPath: string, weekString: string): Promise<APIResponse<any>> {
     try {
       if (exportPath) {
-        // Derive a short narrative from metrics for the "episode"
-        const metrics = computeWeeklyMetrics(exportPath, weekString);
-        const insights = getInsightsFromMetrics(metrics);
-        const summary =
-          insights.map(i => `${i.title}: ${i.detail}`).slice(0, 3).join(' ');
+        // Derive a short narrative from insights for the "episode"
+        const insights = await generateLabfoxSpecificInsights(exportPath, weekString);
+        const summary = insights.slice(0, 3).map(i => `${i.title}: ${i.description}`).join(' ');
         const mockLike = {
           episode: {
             title: 'Weekly Team Signals',

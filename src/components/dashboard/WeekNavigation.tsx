@@ -6,6 +6,13 @@ import { Calendar } from "@/components/ui/calendar";
 import { Popover, PopoverContent, PopoverTrigger } from "@/components/ui/popover";
 import { cn } from "@/lib/utils";
 import { SlackAPI } from "@/lib/api";
+import {
+  getBrowserCompatibleAvailableWeeks,
+  parseWeekString,
+  getDataCoverageSummary,
+  getMostRecentWeekWithData,
+  getWeekStringFromDate
+} from "@/lib/slackDataUtils";
 
 interface WeekNavigationProps {
   selectedWeek: Date;
@@ -24,21 +31,25 @@ export function WeekNavigation({
   useEffect(() => {
     const loadAvailableWeeks = async () => {
       try {
-        // Use API to get available weeks
-        const exportPath = '/slack-export/Labfox Slack export Jun 18 2025 - Jul 18 2025';
-        const response = await SlackAPI.getAvailableWeeks(exportPath);
+        // Use our enhanced utility functions for better accuracy
+        const weeks = await getBrowserCompatibleAvailableWeeks();
+        console.log('📊 WeekNavigation: Loaded weeks:', weeks);
         
-        if (response.success && response.data) {
-          setAvailableWeeks(response.data);
+        if (weeks.length > 0) {
+          setAvailableWeeks(weeks);
+          
+          // Log data coverage summary for debugging
+          const coverage = getDataCoverageSummary();
+          console.log('📈 Data Coverage Summary:', coverage);
         } else {
-          console.error('API Error:', response.error);
-          // Fallback to known weeks
-          setAvailableWeeks(['2025-W28', '2025-W27', '2025-W26', '2025-W25']);
+          console.warn('No weeks found, using fallback');
+          // Fallback to known weeks based on actual data analysis
+          setAvailableWeeks(['2025-W29', '2025-W28', '2025-W27', '2025-W26']);
         }
       } catch (error) {
         console.error('Error loading available weeks:', error);
-        // Fallback to known weeks
-        setAvailableWeeks(['2025-W28', '2025-W27', '2025-W26', '2025-W25']);
+        // Fallback to known weeks based on actual data analysis
+        setAvailableWeeks(['2025-W29', '2025-W28', '2025-W27', '2025-W26']);
       } finally {
         setIsLoading(false);
       }
@@ -47,32 +58,20 @@ export function WeekNavigation({
     loadAvailableWeeks();
   }, []);
 
-  // Convert week string to Date using calendar weeks (Monday start)
+  // Use our utility function for consistent week parsing
   const getWeekStartDate = (weekString: string): Date => {
-    const [year, week] = weekString.split('-W').map(Number);
-    
-    // Calculate the first Monday of the year
-    const firstDayOfYear = new Date(year, 0, 1);
-    const firstMonday = new Date(firstDayOfYear);
-    const dayOfWeek = firstDayOfYear.getDay();
-    const daysToAdd = dayOfWeek === 0 ? 1 : (8 - dayOfWeek) % 7;
-    firstMonday.setDate(firstDayOfYear.getDate() + daysToAdd);
-    
-    // Add weeks to get the target week's Monday
-    const targetMonday = new Date(firstMonday);
-    targetMonday.setDate(firstMonday.getDate() + (week - 1) * 7);
-    
-    return targetMonday;
+    return parseWeekString(weekString);
   };
 
-  // Get current week string
+  // Get current week string using our utility
   const getCurrentWeekString = (date: Date): string => {
-    return `${date.getFullYear()}-W${Math.ceil((date.getTime() - new Date(date.getFullYear(), 0, 1).getTime()) / (7 * 24 * 60 * 60 * 1000))}`;
+    // Import getWeekStringFromDate directly since it's already imported at the top
+    return getWeekStringFromDate(date);
   };
 
-  const currentWeek = startOfWeek(new Date('2025-07-14'), {
-    weekStartsOn: 1
-  });
+  // Use the most recent week with actual data as "current"
+  const mostRecentWeekString = getMostRecentWeekWithData();
+  const currentWeek = parseWeekString(mostRecentWeekString);
   
   const currentWeekString = getCurrentWeekString(selectedWeek);
   const isCurrentWeek = isSameWeek(selectedWeek, currentWeek, {
@@ -171,7 +170,7 @@ export function WeekNavigation({
       <div className="flex items-center gap-2">
         {!isCurrentWeek && (
           <Button variant="default" size="sm" onClick={() => onWeekChange(currentWeek)} className="h-8 px-3 text-xs">
-            Go to Today
+            Go to Latest
           </Button>
         )}
         

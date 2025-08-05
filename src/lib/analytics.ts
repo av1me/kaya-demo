@@ -616,18 +616,25 @@ export async function parseSlackExportData(exportPath: string): Promise<SlackExp
     // Read messages from each channel with better error handling
     const messages: { [channelId: string]: SlackExportMessage[] } = {};
     
-    // List of known date files based on the actual Slack export structure
-    const knownDateFiles = [
-      '2025-06-25.json', '2025-06-26.json', '2025-07-02.json', '2025-07-03.json',
-      '2025-07-04.json', '2025-07-07.json', '2025-07-08.json', '2025-07-09.json',
-      '2025-07-11.json', '2025-07-14.json', '2025-07-16.json'
-    ];
+    // Use the actual known channel-date combinations from our analysis
+    const channelDateMap: Record<string, string[]> = {
+      'general': ['2025-06-26.json'],
+      'llp-internal-dev-team': [
+        '2025-07-02.json', '2025-07-03.json', '2025-07-04.json', '2025-07-07.json',
+        '2025-07-08.json', '2025-07-09.json', '2025-07-11.json', '2025-07-14.json', '2025-07-16.json'
+      ],
+      'product-consulting': ['2025-06-26.json'],
+      'research-material': ['2025-06-25.json'],
+      'zoom-recordings-engineering': ['2025-06-25.json'],
+      'dqx-ai': ['2025-07-07.json']
+    };
     
     for (const channel of channelsData) {
       const channelMessages: SlackExportMessage[] = [];
+      const dateFiles = channelDateMap[channel.name] || [];
       
       // Try to fetch message files for this channel
-      for (const dateFile of knownDateFiles) {
+      for (const dateFile of dateFiles) {
         try {
           const messageFileUrl = `${exportPath}/${channel.name}/${dateFile}`;
           const response = await fetch(messageFileUrl);
@@ -647,12 +654,7 @@ export async function parseSlackExportData(exportPath: string): Promise<SlackExp
           }
         } catch (error) {
           // File doesn't exist or can't be loaded - this is expected for many combinations
-          // Only log if it's an unexpected error
-          if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
-            // Expected - file doesn't exist
-          } else {
-            console.warn(`Could not load ${channel.name}/${dateFile}:`, error);
-          }
+          console.warn(`Could not load ${channel.name}/${dateFile}:`, error);
         }
       }
       
@@ -783,59 +785,13 @@ export async function generateInsightsFromRealData(exportPath: string, selectedW
 // Enhanced function to get available weeks from Slack data using calendar weeks
 export async function getAvailableWeeksFromSlackData(exportPath: string): Promise<string[]> {
   try {
-    // In browser environment, use fetch instead of require
-    const channelsResponse = await fetch(`${exportPath}/channels.json`);
-    const channelsData = await channelsResponse.json() as SlackExportChannel[];
-    const availableDates = new Set<string>();
-    
-    // First, collect all available dates
-    channelsData.forEach(channel => {
-      const channelDir = `${exportPath}/${channel.name}`;
-      try {
-        // In browser environment, we can't use fs operations
-        // This would need to be implemented differently for browser use
-        console.warn(`Cannot read directory ${channelDir} in browser environment`);
-        const files: string[] = [];
-        files.forEach((file: string) => {
-          if (file.endsWith('.json')) {
-            // Extract date from filename (e.g., "2025-06-26.json")
-            const dateMatch = file.match(/(\d{4}-\d{2}-\d{2})\.json/);
-            if (dateMatch) {
-              const date = new Date(dateMatch[1]);
-              if (!isNaN(date.getTime())) { // Valid date check
-                availableDates.add(dateMatch[1]);
-              }
-            }
-          }
-        });
-      } catch (error) {
-        console.warn(`Could not read messages for channel ${channel.name}:`, error);
-      }
-    });
-    
-    // Convert dates to calendar weeks
-    const weeks = new Set<string>();
-    availableDates.forEach(dateStr => {
-      const date = new Date(dateStr);
-      const year = date.getFullYear();
-      
-      // Calculate calendar week number
-      const firstDayOfYear = new Date(year, 0, 1);
-      const firstMonday = new Date(firstDayOfYear);
-      firstMonday.setDate(firstDayOfYear.getDate() + (8 - firstDayOfYear.getDay()) % 7);
-      
-      // Calculate week number
-      const daysDiff = Math.floor((date.getTime() - firstMonday.getTime()) / (24 * 60 * 60 * 1000));
-      const weekNumber = Math.max(1, Math.floor(daysDiff / 7) + 1);
-      
-      const weekString = `${year}-W${weekNumber}`;
-      weeks.add(weekString);
-    });
-    
-    return Array.from(weeks).sort();
+    // Import our new utility functions
+    const { getBrowserCompatibleAvailableWeeks } = await import('./slackDataUtils');
+    return await getBrowserCompatibleAvailableWeeks();
   } catch (error) {
     console.error('Error getting available weeks:', error);
-    return [];
+    // Fallback to known weeks based on our analysis
+    return ['2025-W29', '2025-W28', '2025-W27', '2025-W26'];
   }
 }
 
