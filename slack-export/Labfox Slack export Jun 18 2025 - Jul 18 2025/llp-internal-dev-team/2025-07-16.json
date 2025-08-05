@@ -1,0 +1,517 @@
+[
+    {
+        "user": "U079XV7CY0M",
+        "type": "message",
+        "ts": "1752677575.132539",
+        "client_msg_id": "0cbe65ee-5322-49bf-992a-80fc51a082fd",
+        "text": "<@U02UZPK889Z> <@U08UZQ2FS2X>\n\nLast time we gave them a demo on\n1. User Onboarding for admin &amp; property manager\n2. Properties flow - now removed\/invalid\n3. Admin - user management screen with basic info populated\n4. Admin - Pricing\/Approval page\n\nThis time we will be giving demo on\n1. Admin User management - features like user invitation, last login info, etc.\n2. Rent roll upload feature \n3. Static screens for \n    a. Rent roll submission history tracker\n    b. Manage rent rolls screens\n    c. claims both on admin and property manager view\n<@U02UZPK889Z> can you review this once and confirm before Pat can send it",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "08c220234596",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2024-06-27\/7343481331284_08c220234596119bf9be_72.jpg",
+            "first_name": "Vivek",
+            "real_name": "Vivek Yaligar",
+            "display_name": "Vvk",
+            "team": "T01GV7EP2VD",
+            "name": "vivek",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1752677575.132539",
+        "reply_count": 3,
+        "reply_users_count": 3,
+        "latest_reply": "1752692683.534199",
+        "reply_users": [
+            "U02UZPK889Z",
+            "U079XV7CY0M",
+            "U08UZQ2FS2X"
+        ],
+        "replies": [
+            {
+                "user": "U02UZPK889Z",
+                "ts": "1752685332.790659"
+            },
+            {
+                "user": "U079XV7CY0M",
+                "ts": "1752688123.754019"
+            },
+            {
+                "user": "U08UZQ2FS2X",
+                "ts": "1752692683.534199"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": false,
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "vSyXl",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "user",
+                                "user_id": "U02UZPK889Z"
+                            },
+                            {
+                                "type": "text",
+                                "text": " "
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U08UZQ2FS2X"
+                            },
+                            {
+                                "type": "text",
+                                "text": "\n\nLast time we gave them a demo on\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "User Onboarding for admin & property manager"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Properties flow - now removed\/invalid"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Admin - user management screen with basic info populated"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Admin - Pricing\/Approval page"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "ordered",
+                        "indent": 0,
+                        "border": 0
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "\n\nThis time we will be giving demo on\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Admin User management - features like user invitation, last login info, etc."
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Rent roll upload feature "
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Static screens for "
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "ordered",
+                        "indent": 0,
+                        "border": 0
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Rent roll submission history tracker"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Manage rent rolls screens"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "claims both on admin and property manager view"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "ordered",
+                        "indent": 1,
+                        "border": 0
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "\n"
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U02UZPK889Z"
+                            },
+                            {
+                                "type": "text",
+                                "text": " can you review this once and confirm before Pat can send it"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U02UZPK889Z",
+        "type": "message",
+        "ts": "1752685332.790659",
+        "client_msg_id": "4c784e8e-d5bf-438d-bfd6-afd3833372b8",
+        "text": "<@U079XV7CY0M> which of these are done? Which are yet to be worked on in the to be presented section?",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "f9c84d9572b2",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2022-07-05\/3762851016516_f9c84d9572b288fbd96e_72.jpg",
+            "first_name": "Dinesh",
+            "real_name": "Dinesh",
+            "display_name": "Dinesh",
+            "team": "T01GV7EP2VD",
+            "name": "dineshnadimpalli.work",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1752677575.132539",
+        "parent_user_id": "U079XV7CY0M",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "O7XEP",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "user",
+                                "user_id": "U079XV7CY0M"
+                            },
+                            {
+                                "type": "text",
+                                "text": " which of these are done? Which are yet to be worked on in the to be presented section?"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U079XV7CY0M",
+        "type": "message",
+        "ts": "1752688123.754019",
+        "edited": {
+            "user": "U079XV7CY0M",
+            "ts": "1752688131.000000"
+        },
+        "client_msg_id": "0c1467ce-8004-4a53-b327-21fc0132ac3a",
+        "text": "<@U08UZQ2FS2X> use this for mid week update\n\n1. Figma designs refined based on the Friday discussion and are as below:\n    a. Color Scheme applied based on shared color pallete\n    b. Removed manual signup\n    c. Admin can invite property manager and agent \n    d. Admin\/Agent will manually apply protection plan to Property manager once after user is invited to the platform\n    e. Rent roll upload should follow a specific template Excel\/CSV with defined mandatory fields \n2. Regarding the development the following tasks are accomplished\n    a. Removed the manual signup flow for property manager \n    b. Remove property menu from property manager view \n    c. *In-progress:* Include last 5 login info for each user and company name mapping in admin user management\n    d. *In-progress:* Implementation of rent roll flow to follow the latest discussed logic\n    e. Minor improvements to the Pricing Plan management flow in admin view\nCC: <@U02UZPK889Z>",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "08c220234596",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2024-06-27\/7343481331284_08c220234596119bf9be_72.jpg",
+            "first_name": "Vivek",
+            "real_name": "Vivek Yaligar",
+            "display_name": "Vvk",
+            "team": "T01GV7EP2VD",
+            "name": "vivek",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1752677575.132539",
+        "parent_user_id": "U079XV7CY0M",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "NqaIx",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "user",
+                                "user_id": "U08UZQ2FS2X"
+                            },
+                            {
+                                "type": "text",
+                                "text": " use this for mid week update\n\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Figma designs refined based on the Friday discussion and are as below:"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "ordered",
+                        "indent": 0,
+                        "border": 0
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Color Scheme applied based on shared color pallete"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Removed manual signup"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Admin can invite property manager and agent "
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Admin\/Agent will manually apply protection plan to Property manager once after user is invited to the platform"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Rent roll upload should follow a specific template Excel\/CSV with defined mandatory fields "
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "ordered",
+                        "indent": 1,
+                        "border": 0
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Regarding the development the following tasks are accomplished"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "ordered",
+                        "indent": 0,
+                        "offset": 1,
+                        "border": 0
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Removed the manual signup flow for property manager "
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Remove property menu from property manager view "
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "In-progress: ",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": "Include last 5 login info for each user and company name mapping in admin user management"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "In-progress:",
+                                        "style": {
+                                            "bold": true
+                                        }
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " Implementation of rent roll flow to follow the latest discussed logic"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Minor improvements to the Pricing Plan management flow in admin view"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "ordered",
+                        "indent": 1,
+                        "border": 0
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "\nCC: "
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U02UZPK889Z"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U08UZQ2FS2X",
+        "type": "message",
+        "ts": "1752692683.534199",
+        "client_msg_id": "912c9575-9a46-4c70-a421-bd437141cc7e",
+        "text": "Thank you Vivek",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "g3c29bf49c79",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/3c29bf49c795101ec1d744064bdbcf46.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-72.png",
+            "first_name": "Pat",
+            "real_name": "Pat",
+            "display_name": "Pat",
+            "team": "T01GV7EP2VD",
+            "name": "pat",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1752677575.132539",
+        "parent_user_id": "U079XV7CY0M",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "bgZFr",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Thank you Vivek"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

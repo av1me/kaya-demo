@@ -1,0 +1,440 @@
+[
+    {
+        "user": "U079XV7CY0M",
+        "type": "message",
+        "ts": "1752241289.080699",
+        "client_msg_id": "340f9e80-d6ff-4ec9-aa82-2170555af135",
+        "text": "<!channel> today's demo call agenda\n\n1. Quick development progress demo\n2. Design feedback check-in and finalization \n3. Blockers to be resolved by them - Sample data against Properties, and Rent Roll Details (Tenant information, different data points to be collected across both of these features)\n4. Q&amp;A",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "08c220234596",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2024-06-27\/7343481331284_08c220234596119bf9be_72.jpg",
+            "first_name": "Vivek",
+            "real_name": "Vivek Yaligar",
+            "display_name": "Vvk",
+            "team": "T01GV7EP2VD",
+            "name": "vivek",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1752241289.080699",
+        "reply_count": 1,
+        "reply_users_count": 1,
+        "latest_reply": "1752247388.651229",
+        "reply_users": [
+            "U079XV7CY0M"
+        ],
+        "replies": [
+            {
+                "user": "U079XV7CY0M",
+                "ts": "1752247388.651229"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": false,
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "eo9IN",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "broadcast",
+                                "range": "channel"
+                            },
+                            {
+                                "type": "text",
+                                "text": " today's demo call agenda\n\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Quick development progress demo"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Design feedback check-in and finalization "
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Blockers to be resolved by them - Sample data against Properties, and Rent Roll Details (Tenant information, different data points to be collected across both of these features)"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Q&A"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "ordered",
+                        "indent": 0,
+                        "border": 0
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U08UZQ2FS2X",
+        "type": "message",
+        "ts": "1752242104.359819",
+        "client_msg_id": "cbd234dd-a6e4-4357-ad83-612a2484966f",
+        "text": "<@U079XV7CY0M> I have shared a google drive he shared on email. Feel free to check.",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "g3c29bf49c79",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/3c29bf49c795101ec1d744064bdbcf46.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-72.png",
+            "first_name": "Pat",
+            "real_name": "Pat",
+            "display_name": "Pat",
+            "team": "T01GV7EP2VD",
+            "name": "pat",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1752242104.359819",
+        "reply_count": 1,
+        "reply_users_count": 1,
+        "latest_reply": "1752243134.506449",
+        "reply_users": [
+            "U079XV7CY0M"
+        ],
+        "replies": [
+            {
+                "user": "U079XV7CY0M",
+                "ts": "1752243134.506449"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": false,
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "\/m5vr",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "user",
+                                "user_id": "U079XV7CY0M"
+                            },
+                            {
+                                "type": "text",
+                                "text": " I have shared a google drive he shared on email. Feel free to check."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U079XV7CY0M",
+        "type": "message",
+        "ts": "1752243134.506449",
+        "client_msg_id": "df1219fd-6694-4046-b664-70f3d05e6405",
+        "text": "I have seen it already it just contains logo assets",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "08c220234596",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2024-06-27\/7343481331284_08c220234596119bf9be_72.jpg",
+            "first_name": "Vivek",
+            "real_name": "Vivek Yaligar",
+            "display_name": "Vvk",
+            "team": "T01GV7EP2VD",
+            "name": "vivek",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1752242104.359819",
+        "parent_user_id": "U08UZQ2FS2X",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "8OZZK",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "I have seen it already it just contains logo assets"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U079XV7CY0M",
+        "type": "message",
+        "ts": "1752247388.651229",
+        "client_msg_id": "51e8a7b7-cffe-4b51-a35b-9daeca4fad75",
+        "text": "*Property Manager Flows:*\n1. what all are the input fields for the property data\n2. what all tenant details are mandatory to be available in the csv. Share a sample csv reference\n3. Tenant coverage details, how exactly it is calculated\n4. Once a rent roll is uploaded what level of details is allowed to be edited (can they enable or disable the protection for a tenant)\n5. What if the property manager adds or removes a tenant from rent roll how would this be handled for payments\n6. What all info required for tracking damage claims\n7. As they payments are of high value will there be any requirement of offline transaction tracking like a mode of payment\n\n\n*Admin Flows:*\n1. If we want to maintain company name for each user then we would have to create a list of companies with the domain info and map it with the user account to create the bucketing logic to track users by company\n2.  Future scope assigning a agent to assist a property manager - Possible to extend!\n3. Send email - will keep it as last scope\n",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "08c220234596",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2024-06-27\/7343481331284_08c220234596119bf9be_72.jpg",
+            "first_name": "Vivek",
+            "real_name": "Vivek Yaligar",
+            "display_name": "Vvk",
+            "team": "T01GV7EP2VD",
+            "name": "vivek",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1752241289.080699",
+        "parent_user_id": "U079XV7CY0M",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "5Qtxj",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Property Manager Flows:",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "what all are the input fields for the property data"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "what all tenant details are mandatory to be available in the csv. Share a sample csv reference"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Tenant coverage details, how exactly it is calculated"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Once a rent roll is uploaded what level of details is allowed to be edited (can they enable or disable the protection for a tenant)"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "What if the property manager adds or removes a tenant from rent roll how would this be handled for payments"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "What all info required for tracking damage claims"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "As they payments are of high value will there be any requirement of offline transaction tracking like a mode of payment"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "ordered",
+                        "indent": 0,
+                        "border": 0
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "\n\n\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "Admin Flows:",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "If we want to maintain company name for each user then we would have to create a list of companies with the domain info and map it with the user account to create the bucketing logic to track users by company"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": " Future scope assigning a agent to assist a property manager - Possible to extend!"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Send email - will keep it as last scope"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "ordered",
+                        "indent": 0,
+                        "border": 0
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": []
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U079XV7CY0M",
+        "type": "message",
+        "ts": "1752253010.331719",
+        "client_msg_id": "1968cb65-aa97-4427-81f0-87e08b3feda2",
+        "text": "<@U02UZPK889Z> <@U03APGCTWHF> 1 major change expected is on the rent roll uploads it will be inclusive of properties there is no separate flow for property creation and then adding rent rolls under it, it will all be in a single go\n\nCC: <@U040TMXT4RM>",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "08c220234596",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2024-06-27\/7343481331284_08c220234596119bf9be_72.jpg",
+            "first_name": "Vivek",
+            "real_name": "Vivek Yaligar",
+            "display_name": "Vvk",
+            "team": "T01GV7EP2VD",
+            "name": "vivek",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "a61fc",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "user",
+                                "user_id": "U02UZPK889Z"
+                            },
+                            {
+                                "type": "text",
+                                "text": " "
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U03APGCTWHF"
+                            },
+                            {
+                                "type": "text",
+                                "text": " 1 major change expected is on the rent roll uploads it will be inclusive of properties there is no separate flow for property creation and then adding rent rolls under it, it will all be in a single go\n\nCC: "
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U040TMXT4RM"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U040TMXT4RM"
+                ],
+                "count": 1
+            }
+        ]
+    }
+]

@@ -1,0 +1,356 @@
+[
+    {
+        "user": "U08UZQ2FS2X",
+        "type": "message",
+        "ts": "1751898341.294889",
+        "client_msg_id": "e57ba6c8-badf-4f75-aa0e-e5b10af968c0",
+        "text": "Key Discussion Points\n1. Figma Design Walkthrough\nTwo flows: Property Manager and Admin.\nModules: sign-in\/sign-up, dashboard, property management, rent roll upload, claims, production plans, payments,\nresources, invoice tracking.\nOnly admins can approve new property managers before access is granted.\n2. Rent Roll Submission\nSingle document per client across all properties.\nRequired fields: tenant name, property address, unit number.\nNot required: monthly rent, lease start\/end dates.\nAllow categorization by plan (25k, 50k, 100k).\n3. Production Plans\nPlans: 25k (all-inclusive), 50k, 100k.\n50k &amp; 100k should allow add-ons like ESA support and enhanced biohazard coverage (as separate line items).\n4. Claims Process\nClaims are property and unit specific.\nRequired: tenant name, address, unit number, type of damage.\nGroup damage types. Upload initial &amp; final photos. Include claim timeline tracking.\n5. Admin Panel\nAdmin can invite property managers, view rent rolls, upload resources, see invoices.\nAdmin views reflect those of property managers.\n6. Branding\/Theming\nAdd company logo. Steve to share logo files and color themes.\nMeeting Summary &amp; Action Points\n7. Access &amp; Authentication Issues\nGitHub and AWS require 2FA.\nJeremy to assist post-call with verification codes or temporary disablement.\n8. Next Steps &amp; Development Progress\nDevelopment ongoing. Target: 6 weeks.\nDemos expected early next week. Figma feedback due by mid\/end of next week.\nAction Items by Team Member\nSteve \/ Jeremy\n- Share logo files and branding guidelines.\n- Send sample rent roll format.\n- Provide GitHub &amp; AWS 2FA codes or disable temporarily.\n- Share large file folder.\n- Comment directly on Figma.\nDinesh\n- Update Figma: rent roll fields, claim categorization, dropdowns for add-ons.\n- Enable theming\/logo upon receipt.\n- Coordinate login attempts.\n- Continue dev work and prepare demos.\nPatricia\n- Follow up for branding files.\n- Confirm AWS\/GitHub access.\n- Coordinate feedback in Figma.\nVivek\n- Retry logins post-verification.\n- Review Figma for pending feedback.",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "g3c29bf49c79",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/3c29bf49c795101ec1d744064bdbcf46.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-72.png",
+            "first_name": "Pat",
+            "real_name": "Pat",
+            "display_name": "Pat",
+            "team": "T01GV7EP2VD",
+            "name": "pat",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "QUh0v",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Key Discussion Points\n1. Figma Design Walkthrough\nTwo flows: Property Manager and Admin.\nModules: sign-in\/sign-up, dashboard, property management, rent roll upload, claims, production plans, payments,\nresources, invoice tracking.\nOnly admins can approve new property managers before access is granted.\n2. Rent Roll Submission\nSingle document per client across all properties.\nRequired fields: tenant name, property address, unit number.\nNot required: monthly rent, lease start\/end dates.\nAllow categorization by plan (25k, 50k, 100k).\n3. Production Plans\nPlans: 25k (all-inclusive), 50k, 100k.\n50k & 100k should allow add-ons like ESA support and enhanced biohazard coverage (as separate line items).\n4. Claims Process\nClaims are property and unit specific.\nRequired: tenant name, address, unit number, type of damage.\nGroup damage types. Upload initial & final photos. Include claim timeline tracking.\n5. Admin Panel\nAdmin can invite property managers, view rent rolls, upload resources, see invoices.\nAdmin views reflect those of property managers.\n6. Branding\/Theming\nAdd company logo. Steve to share logo files and color themes.\nMeeting Summary & Action Points\n7. Access & Authentication Issues\nGitHub and AWS require 2FA.\nJeremy to assist post-call with verification codes or temporary disablement.\n8. Next Steps & Development Progress\nDevelopment ongoing. Target: 6 weeks.\nDemos expected early next week. Figma feedback due by mid\/end of next week.\nAction Items by Team Member\nSteve \/ Jeremy\n- Share logo files and branding guidelines.\n- Send sample rent roll format.\n- Provide GitHub & AWS 2FA codes or disable temporarily.\n- Share large file folder.\n- Comment directly on Figma.\nDinesh\n- Update Figma: rent roll fields, claim categorization, dropdowns for add-ons.\n- Enable theming\/logo upon receipt.\n- Coordinate login attempts.\n- Continue dev work and prepare demos.\nPatricia\n- Follow up for branding files.\n- Confirm AWS\/GitHub access.\n- Coordinate feedback in Figma.\nVivek\n- Retry logins post-verification.\n- Review Figma for pending feedback."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U08UZQ2FS2X",
+        "type": "message",
+        "ts": "1751898369.601449",
+        "client_msg_id": "bafb04b3-df4d-4ab0-b19b-bc8732e3c156",
+        "text": "<!channel> meeting notes from Friday call with LLP",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "g3c29bf49c79",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/3c29bf49c795101ec1d744064bdbcf46.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-72.png",
+            "first_name": "Pat",
+            "real_name": "Pat",
+            "display_name": "Pat",
+            "team": "T01GV7EP2VD",
+            "name": "pat",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "Kjl\/t",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "broadcast",
+                                "range": "channel"
+                            },
+                            {
+                                "type": "text",
+                                "text": " meeting notes from Friday call with LLP"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U08UZQ2FS2X",
+        "type": "message",
+        "ts": "1751905891.350209",
+        "client_msg_id": "76c7010e-cc77-420b-8abc-20a79496742d",
+        "text": "Hi <@U02UZPK889Z>, do we have this MSA ready?",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "g3c29bf49c79",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/3c29bf49c795101ec1d744064bdbcf46.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-72.png",
+            "first_name": "Pat",
+            "real_name": "Pat",
+            "display_name": "Pat",
+            "team": "T01GV7EP2VD",
+            "name": "pat",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1751637775.777269",
+        "parent_user_id": "U08UZQ2FS2X",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "gUwp7",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Hi "
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U02UZPK889Z"
+                            },
+                            {
+                                "type": "text",
+                                "text": ", do we have this MSA ready?"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U040TMXT4RM",
+        "type": "message",
+        "ts": "1751913682.902479",
+        "client_msg_id": "83b1cf52-0975-4a8d-9e80-9761bc960c55",
+        "text": "<@U02UZPK889Z>",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "dc2178d63857",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2023-05-24\/5326151890321_dc2178d63857395c7f7e_72.jpg",
+            "first_name": "Anser",
+            "real_name": "Anser Ali",
+            "display_name": "Anser Ali",
+            "team": "T01GV7EP2VD",
+            "name": "anser7ali",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "A8W\/5",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "user",
+                                "user_id": "U02UZPK889Z"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U040TMXT4RM",
+        "type": "message",
+        "ts": "1751913706.822889",
+        "client_msg_id": "2b53414d-0da3-4f18-b712-f277f391f4dd",
+        "text": "<@U08HKCWH4EP>\ncan admin user login into app?",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "dc2178d63857",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2023-05-24\/5326151890321_dc2178d63857395c7f7e_72.jpg",
+            "first_name": "Anser",
+            "real_name": "Anser Ali",
+            "display_name": "Anser Ali",
+            "team": "T01GV7EP2VD",
+            "name": "anser7ali",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "rgwVi",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "user",
+                                "user_id": "U08HKCWH4EP"
+                            },
+                            {
+                                "type": "text",
+                                "text": "\ncan admin user login into app?"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U02UZPK889Z",
+        "type": "message",
+        "ts": "1751916068.541099",
+        "client_msg_id": "04f0307d-3b83-48da-9555-7c1de8c26a89",
+        "text": "&gt; can admin user login into app?\nno <@U040TMXT4RM> let's restrict for now",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "f9c84d9572b2",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2022-07-05\/3762851016516_f9c84d9572b288fbd96e_72.jpg",
+            "first_name": "Dinesh",
+            "real_name": "Dinesh",
+            "display_name": "Dinesh",
+            "team": "T01GV7EP2VD",
+            "name": "dineshnadimpalli.work",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "Wam\/K",
+                "elements": [
+                    {
+                        "type": "rich_text_quote",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "can admin user login into app?"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "no "
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U040TMXT4RM"
+                            },
+                            {
+                                "type": "text",
+                                "text": " let's restrict for now"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U040TMXT4RM",
+        "type": "message",
+        "ts": "1751916140.444389",
+        "client_msg_id": "39a373ff-b5ca-4f85-877f-b0fc3f2f9513",
+        "text": "ok",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "dc2178d63857",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2023-05-24\/5326151890321_dc2178d63857395c7f7e_72.jpg",
+            "first_name": "Anser",
+            "real_name": "Anser Ali",
+            "display_name": "Anser Ali",
+            "team": "T01GV7EP2VD",
+            "name": "anser7ali",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "luWBi",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "ok"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U02UZPK889Z",
+        "type": "message",
+        "ts": "1751916868.797639",
+        "client_msg_id": "44246c8e-8a3a-453d-8274-d7b95351965f",
+        "text": "<!channel> jira has been fixed",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "f9c84d9572b2",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2022-07-05\/3762851016516_f9c84d9572b288fbd96e_72.jpg",
+            "first_name": "Dinesh",
+            "real_name": "Dinesh",
+            "display_name": "Dinesh",
+            "team": "T01GV7EP2VD",
+            "name": "dineshnadimpalli.work",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "ouXX6",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "broadcast",
+                                "range": "channel"
+                            },
+                            {
+                                "type": "text",
+                                "text": " jira has been fixed"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U079XV7CY0M",
+                    "U040TMXT4RM",
+                    "U08UZQ2FS2X"
+                ],
+                "count": 3
+            }
+        ]
+    }
+]

@@ -1,0 +1,129 @@
+[
+    {
+        "user": "U08UZQ2FS2X",
+        "type": "message",
+        "ts": "1751984271.304139",
+        "client_msg_id": "1596f185-258b-4290-b349-f3d30a566156",
+        "text": "<@U02UZPK889Z> and <@U079XV7CY0M> please check your emails - regarding Co-comply",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "g3c29bf49c79",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/3c29bf49c795101ec1d744064bdbcf46.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-72.png",
+            "first_name": "Pat",
+            "real_name": "Pat",
+            "display_name": "Pat",
+            "team": "T01GV7EP2VD",
+            "name": "pat",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1751984271.304139",
+        "reply_count": 1,
+        "reply_users_count": 1,
+        "latest_reply": "1751993708.237939",
+        "reply_users": [
+            "U02UZPK889Z"
+        ],
+        "replies": [
+            {
+                "user": "U02UZPK889Z",
+                "ts": "1751993708.237939"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": false,
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "CGSuV",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "user",
+                                "user_id": "U02UZPK889Z"
+                            },
+                            {
+                                "type": "text",
+                                "text": " and "
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U079XV7CY0M"
+                            },
+                            {
+                                "type": "text",
+                                "text": " please check your emails - regarding Co-comply"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "reactions": [
+            {
+                "name": "eyes",
+                "users": [
+                    "U079XV7CY0M"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "user": "U02UZPK889Z",
+        "type": "message",
+        "ts": "1751993708.237939",
+        "client_msg_id": "9dcdb6c8-4cde-4e17-b0a1-a71b1333fb2e",
+        "text": "<@U08UZQ2FS2X> this channel is only for llp related comms. Please send group messages from next time",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "f9c84d9572b2",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2022-07-05\/3762851016516_f9c84d9572b288fbd96e_72.jpg",
+            "first_name": "Dinesh",
+            "real_name": "Dinesh",
+            "display_name": "Dinesh",
+            "team": "T01GV7EP2VD",
+            "name": "dineshnadimpalli.work",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1751984271.304139",
+        "parent_user_id": "U08UZQ2FS2X",
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "RBZNk",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "user",
+                                "user_id": "U08UZQ2FS2X"
+                            },
+                            {
+                                "type": "text",
+                                "text": " this channel is only for llp related comms. Please send group messages from next time"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08UZQ2FS2X"
+                ],
+                "count": 1
+            }
+        ]
+    }
+]
