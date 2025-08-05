@@ -1,0 +1,818 @@
+[
+    {
+        "user": "U079XV7CY0M",
+        "type": "message",
+        "ts": "1751548241.093419",
+        "client_msg_id": "4c87b5bd-49df-407b-91d3-e94daa438bcf",
+        "text": "We need help from client to login to github as it is asking for 2FA code",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "08c220234596",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2024-06-27\/7343481331284_08c220234596119bf9be_72.jpg",
+            "first_name": "Vivek",
+            "real_name": "Vivek Yaligar",
+            "display_name": "Vvk",
+            "team": "T01GV7EP2VD",
+            "name": "vivek",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "zVQ2O",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "We need help from client to login to github as it is asking for 2FA code"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    },
+    {
+        "user": "U079XV7CY0M",
+        "type": "message",
+        "ts": "1751554975.907709",
+        "client_msg_id": "7783b30b-6082-428f-beff-21a6673b11a4",
+        "text": "1. Domain Name Access\nWe need access to your *domain provider* (like GoDaddy, Namecheap, or Squarespace formerly Google Domains) to set up your app website, such as:\n• <http:\/\/admin.landlordliabilityprotection.com|admin.landlordliabilityprotection.com>\n• <http:\/\/app.landlordliabilityprotection.com|app.landlordliabilityprotection.com>\n*What you do:*\n• (Recommended) Invite us as a collaborator, or share login access\n• Be available to add a few DNS records (we’ll tell you exactly what to enter)\n*DNS Setup Help:*\n• <https:\/\/www.godaddy.com\/help\/add-a-cname-record-19236|GoDaddy DNS setup guide>\n• <https:\/\/www.namecheap.com\/support\/knowledgebase\/article.aspx\/9776\/2218\/how-can-i-set-up-a-cname-record-for-my-domain\/|Namecheap DNS setup guide>\n• <https:\/\/support.squarespace.com\/hc\/en-us\/articles\/205812378-Adding-custom-records-to-your-domain|Squarespace (formerly Google Domains) DNS setup guide>\n2. Google Login Setup\nTo allow users to sign in with Google, we need to set up an app on Google’s Cloud Console.\n*What you do:*\n• (Recommended) Create and share Google Cloud Console credentials, or\n• Add us as a developer at <https:\/\/console.cloud.google.com\/|Google Cloud Console>\nWe’ll handle the technical details!\n\n3. Supabase Account (Database &amp; Files)\nSupabase stores all app data, user info, and uploaded files.\n*What you do:*\n• (Recommended) Create a free account at <http:\/\/supabase.com|supabase.com>\nWe’ll handle setup and security.\n\n4. Email Service (Optional)\nFor email notifications (like password resets), we use services such as <https:\/\/resend.com\/|Resend>, <https:\/\/sendgrid.com\/|SendGrid>, or your company Gmail\/Google Workspace.\n*What you do:*\n• Let us know which email you want to use for notifications, or\n• Share\/create an account at one of the providers above\n5. Branding Assets\nTo customize the app with your brand:\n*What you do:*\n• Send us your company logo (PNG\/SVG) and favicon\n6. Admin\/Manager Emails\nWe’ll set up initial user accounts.\n*What you do:*\n• Share the email addresses for your admin and property manager team who need early access\n• Or we can setup using dummy accounts like <mailto:test@landlordliabilityprotection.com|test@landlordliabilityprotection.com> \n7. Sample Data (Optional)\nTo test the app before launch, you can send us:\n*What you do:*\n• A sample rent roll (Excel or CSV)\n• Example PDFs or resources for your landlord education center\n*We’re here to help with every step.* If you have any questions or need us to handle any part, just let us know!\n\n\n<@U08UZQ2FS2X> <@U02UZPK889Z>",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "08c220234596",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2024-06-27\/7343481331284_08c220234596119bf9be_72.jpg",
+            "first_name": "Vivek",
+            "real_name": "Vivek Yaligar",
+            "display_name": "Vvk",
+            "team": "T01GV7EP2VD",
+            "name": "vivek",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "attachments": [
+            {
+                "from_url": "https:\/\/www.godaddy.com\/help\/add-a-cname-record-19236",
+                "thumb_url": "https:\/\/img1.wsimg.com\/dc-assets\/help-center\/0.0.2\/og-social-gd-general.png",
+                "thumb_width": 3600,
+                "thumb_height": 1881,
+                "service_icon": "http:\/\/img6.wsimg.com\/ux-assets\/favicon\/apple-icon-57x57.png",
+                "id": 1,
+                "original_url": "https:\/\/www.godaddy.com\/help\/add-a-cname-record-19236",
+                "fallback": "GoDaddy - Add a CNAME record",
+                "text": "Add a CNAME record to add a domain prefix that points to another domain name or URL.",
+                "title": "GoDaddy - Add a CNAME record",
+                "title_link": "https:\/\/www.godaddy.com\/help\/add-a-cname-record-19236",
+                "service_name": "godaddy.com"
+            },
+            {
+                "from_url": "https:\/\/www.namecheap.com\/support\/knowledgebase\/article.aspx\/9776\/2218\/how-can-i-set-up-a-cname-record-for-my-domain\/",
+                "thumb_url": "https:\/\/files.namecheap.com\/cdn\/1092\/assets\/images\/namecheap.png",
+                "thumb_width": 169,
+                "thumb_height": 48,
+                "service_icon": "https:\/\/www.namecheap.com\/favicon.ico",
+                "id": 2,
+                "original_url": "https:\/\/www.namecheap.com\/support\/knowledgebase\/article.aspx\/9776\/2218\/how-can-i-set-up-a-cname-record-for-my-domain\/",
+                "fallback": "How to Create a Subdomain for my Domain - Domains - Namecheap.com",
+                "text": "Learn more about How to Create a Subdomain for my Domain. Find your answers at Namecheap Knowledge Base.",
+                "title": "How to Create a Subdomain for my Domain - Domains - Namecheap.com",
+                "title_link": "https:\/\/www.namecheap.com\/support\/knowledgebase\/article.aspx\/9776\/2218\/how-can-i-set-up-a-cname-record-for-my-domain\/",
+                "service_name": "namecheap.com"
+            },
+            {
+                "from_url": "https:\/\/support.squarespace.com\/hc\/en-us\/articles\/205812378-Adding-custom-records-to-your-domain",
+                "service_icon": "https:\/\/support.squarespace.com\/hc\/theming_assets\/01HZFVW2268CTBGRZP9T7CBH60",
+                "id": 3,
+                "original_url": "https:\/\/support.squarespace.com\/hc\/en-us\/articles\/205812378-Adding-custom-records-to-your-domain",
+                "fallback": "Squarespace Help Center: Connecting a third-party domain to your Squarespace site",
+                "text": "Map your third-party domain to your site, but keep it registered with the original provider.\n\nNote: This guide is for third-party domains. If you had a Google domain that migrated to Squarespace, y...",
+                "title": "Connecting a third-party domain to your Squarespace site",
+                "title_link": "https:\/\/support.squarespace.com\/hc\/en-us\/articles\/205812378-Adding-custom-records-to-your-domain",
+                "service_name": "Squarespace Help Center"
+            },
+            {
+                "from_url": "https:\/\/console.cloud.google.com\/",
+                "service_icon": "https:\/\/accounts.google.com\/favicon.ico",
+                "id": 4,
+                "original_url": "https:\/\/console.cloud.google.com\/",
+                "fallback": "Google Cloud Platform",
+                "text": "Google Cloud Platform lets you build, deploy, and scale applications, websites, and services on the same infrastructure as Google.",
+                "title": "Google Cloud Platform",
+                "title_link": "https:\/\/console.cloud.google.com\/",
+                "service_name": "accounts.google.com"
+            },
+            {
+                "from_url": "https:\/\/resend.com\/",
+                "image_url": "https:\/\/resend.com\/static\/cover.png",
+                "image_width": 1920,
+                "image_height": 1008,
+                "image_bytes": 1099174,
+                "service_icon": "https:\/\/resend.com\/static\/favicons\/favicon@57x57.png",
+                "id": 5,
+                "original_url": "https:\/\/resend.com\/",
+                "fallback": "Resend · Email for developers",
+                "text": "The best way to reach humans instead of spam folders. Deliver transactional and marketing emails at scale.",
+                "title": "Resend · Email for developers",
+                "title_link": "https:\/\/resend.com\/",
+                "service_name": "resend.com"
+            }
+        ],
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "8x6Y7",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "1. Domain Name Access\nWe need access to your "
+                            },
+                            {
+                                "type": "text",
+                                "text": "domain provider",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " (like GoDaddy, Namecheap, or Squarespace formerly Google Domains) to set up your app website, such as:\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "link",
+                                        "url": "http:\/\/admin.landlordliabilityprotection.com",
+                                        "text": "admin.landlordliabilityprotection.com"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "link",
+                                        "url": "http:\/\/app.landlordliabilityprotection.com",
+                                        "text": "app.landlordliabilityprotection.com"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "bullet",
+                        "indent": 0,
+                        "border": 0
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "What you do:",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "(Recommended) Invite us as a collaborator, or share login access"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Be available to add a few DNS records (we’ll tell you exactly what to enter)"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "bullet",
+                        "indent": 0,
+                        "border": 0
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "DNS Setup Help:",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "link",
+                                        "url": "https:\/\/www.godaddy.com\/help\/add-a-cname-record-19236",
+                                        "text": "GoDaddy DNS setup guide"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "link",
+                                        "url": "https:\/\/www.namecheap.com\/support\/knowledgebase\/article.aspx\/9776\/2218\/how-can-i-set-up-a-cname-record-for-my-domain\/",
+                                        "text": "Namecheap DNS setup guide"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "link",
+                                        "url": "https:\/\/support.squarespace.com\/hc\/en-us\/articles\/205812378-Adding-custom-records-to-your-domain",
+                                        "text": "Squarespace (formerly Google Domains) DNS setup guide"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "bullet",
+                        "indent": 0,
+                        "border": 0
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "\n2. Google Login Setup\nTo allow users to sign in with Google, we need to set up an app on Google’s Cloud Console.\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "What you do:",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "(Recommended) Create and share Google Cloud Console credentials, or"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Add us as a developer at "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "https:\/\/console.cloud.google.com\/",
+                                        "text": "Google Cloud Console"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "bullet",
+                        "indent": 0,
+                        "border": 0
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "We’ll handle the technical details!\n\n3. Supabase Account (Database & Files)\nSupabase stores all app data, user info, and uploaded files.\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "What you do:",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "(Recommended) Create a free account at "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "http:\/\/supabase.com",
+                                        "text": "supabase.com"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "bullet",
+                        "indent": 0,
+                        "border": 0
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "We’ll handle setup and security.\n\n4. Email Service (Optional)\nFor email notifications (like password resets), we use services such as "
+                            },
+                            {
+                                "type": "link",
+                                "url": "https:\/\/resend.com\/",
+                                "text": "Resend"
+                            },
+                            {
+                                "type": "text",
+                                "text": ", "
+                            },
+                            {
+                                "type": "link",
+                                "url": "https:\/\/sendgrid.com\/",
+                                "text": "SendGrid"
+                            },
+                            {
+                                "type": "text",
+                                "text": ", or your company Gmail\/Google Workspace.\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "What you do:",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Let us know which email you want to use for notifications, or"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Share\/create an account at one of the providers above"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "bullet",
+                        "indent": 0,
+                        "border": 0
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "\n5. Branding Assets\nTo customize the app with your brand:\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "What you do:",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Send us your company logo (PNG\/SVG) and favicon"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "bullet",
+                        "indent": 0,
+                        "border": 0
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "\n6. Admin\/Manager Emails\nWe’ll set up initial user accounts.\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "What you do:",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Share the email addresses for your admin and property manager team who need early access"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Or we can setup using dummy accounts like "
+                                    },
+                                    {
+                                        "type": "link",
+                                        "url": "mailto:test@landlordliabilityprotection.com",
+                                        "text": "test@landlordliabilityprotection.com"
+                                    },
+                                    {
+                                        "type": "text",
+                                        "text": " "
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "bullet",
+                        "indent": 0,
+                        "border": 0
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "\n7. Sample Data (Optional)\nTo test the app before launch, you can send us:\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "What you do:",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "\n"
+                            }
+                        ]
+                    },
+                    {
+                        "type": "rich_text_list",
+                        "elements": [
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "A sample rent roll (Excel or CSV)"
+                                    }
+                                ]
+                            },
+                            {
+                                "type": "rich_text_section",
+                                "elements": [
+                                    {
+                                        "type": "text",
+                                        "text": "Example PDFs or resources for your landlord education center"
+                                    }
+                                ]
+                            }
+                        ],
+                        "style": "bullet",
+                        "indent": 0,
+                        "border": 0
+                    },
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "We’re here to help with every step.",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " If you have any questions or need us to handle any part, just let us know!\n\n\n"
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U08UZQ2FS2X"
+                            },
+                            {
+                                "type": "text",
+                                "text": " "
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U02UZPK889Z"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "reactions": [
+            {
+                "name": "raised_hands",
+                "users": [
+                    "U02UZPK889Z"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "user": "U079XV7CY0M",
+        "type": "message",
+        "ts": "1751571623.892349",
+        "edited": {
+            "user": "U079XV7CY0M",
+            "ts": "1751571636.000000"
+        },
+        "client_msg_id": "cf7049cb-6862-4532-ab1b-901c53866b32",
+        "text": "<@U02UZPK889Z> <@U040TMXT4RM>\n\n*Github:* Sent invites to join the llp org check your labfox emails, below are the list of repos created as placeholder.\n<https:\/\/github.com\/LLPadmin\/llp-frontend>\n<https:\/\/github.com\/LLPadmin\/llp-backend>\n\n*AWS:* Shared admin access to your labfox email please check and set the password for it on your own the email contains the relevant instructions.\n\n*Supabase:* Check email for access\n\n*Stripe:* Awaiting Jeremy's confirmation\n\n*GCP:* Awaiting on google acc credentials\n\n*SquareSpace Domain:* I have the admin access I will be supporting with domain setting updates.\n\n*Railway:* I will share the access or details once I get into the google acc\n\nSo far we have what we need to start implementation hence no blockers as such for sprint 1 with project setup\/templating\n\nCC: <@U08UZQ2FS2X>",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "08c220234596",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2024-06-27\/7343481331284_08c220234596119bf9be_72.jpg",
+            "first_name": "Vivek",
+            "real_name": "Vivek Yaligar",
+            "display_name": "Vvk",
+            "team": "T01GV7EP2VD",
+            "name": "vivek",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "DRtFV",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "user",
+                                "user_id": "U02UZPK889Z"
+                            },
+                            {
+                                "type": "text",
+                                "text": " "
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U040TMXT4RM"
+                            },
+                            {
+                                "type": "text",
+                                "text": "\n\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "Github:",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " Sent invites to join the llp org check your labfox emails, below are the list of repos created as placeholder.\n"
+                            },
+                            {
+                                "type": "link",
+                                "url": "https:\/\/github.com\/LLPadmin\/llp-frontend"
+                            },
+                            {
+                                "type": "text",
+                                "text": "\n"
+                            },
+                            {
+                                "type": "link",
+                                "url": "https:\/\/github.com\/LLPadmin\/llp-backend"
+                            },
+                            {
+                                "type": "text",
+                                "text": "\n\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "AWS: ",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "Shared admin access to your labfox email please check and set the password for it on your own the email contains the relevant instructions.\n\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "Supabase: ",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "Check email for access\n\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "Stripe: ",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "Awaiting Jeremy's confirmation\n\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "GCP:",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": " Awaiting on google acc credentials\n\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "SquareSpace Domain: ",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "I have the admin access I will be supporting with domain setting updates.\n\n"
+                            },
+                            {
+                                "type": "text",
+                                "text": "Railway: ",
+                                "style": {
+                                    "bold": true
+                                }
+                            },
+                            {
+                                "type": "text",
+                                "text": "I will share the access or details once I get into the google acc\n\nSo far we have what we need to start implementation hence no blockers as such for sprint 1 with project setup\/templating\n\nCC: "
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U08UZQ2FS2X"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "reactions": [
+            {
+                "name": "+1",
+                "users": [
+                    "U08UZQ2FS2X"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "user": "U08UZQ2FS2X",
+        "type": "message",
+        "ts": "1751571876.686969",
+        "client_msg_id": "37b6f78f-00d9-4f31-81db-ed10c518f5d8",
+        "text": "Thank you <@U079XV7CY0M>",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "g3c29bf49c79",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/3c29bf49c795101ec1d744064bdbcf46.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-72.png",
+            "first_name": "Pat",
+            "real_name": "Pat",
+            "display_name": "Pat",
+            "team": "T01GV7EP2VD",
+            "name": "pat",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "pVcsi",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Thank you "
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U079XV7CY0M"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

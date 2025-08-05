@@ -65,7 +65,7 @@ export const InsightsSection = ({
         const defaultCompanyId = 'default-company-id';
         
         // Get team health metrics from API (using legacy compatibility method)
-        const exportPath = '/Users/avinashuddaraju/Downloads/Labfox Slack export Jun 18 2025 - Jul 18 2025';
+        const exportPath = '/slack-export/Labfox Slack export Jun 18 2025 - Jul 18 2025';
         const weekString = `${selectedWeek.getFullYear()}-W${Math.ceil((selectedWeek.getTime() - new Date(selectedWeek.getFullYear(), 0, 1).getTime()) / (7 * 24 * 60 * 60 * 1000))}`;
         const healthResponse = await SlackAPI.getTeamHealth(exportPath, weekString);
         if (healthResponse.success && healthResponse.data) {

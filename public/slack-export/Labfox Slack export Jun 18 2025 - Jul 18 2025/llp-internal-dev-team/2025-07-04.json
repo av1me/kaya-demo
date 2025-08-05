@@ -1,0 +1,135 @@
+[
+    {
+        "user": "U08UZQ2FS2X",
+        "type": "message",
+        "ts": "1751637775.777269",
+        "client_msg_id": "57c92ef3-688a-47f4-a36a-02e095b0d64f",
+        "text": "Hi <@U02UZPK889Z>, no update on LLP from me. However from CoComply, we need to develop an MSA and SOW for them to be sent out on Monday. Avi says you have context. Please work with <@U079XV7CY0M> on this. Let me know if you need any clarification or assistance. Thanks.",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "g3c29bf49c79",
+            "image_72": "https:\/\/secure.gravatar.com\/avatar\/3c29bf49c795101ec1d744064bdbcf46.jpg?s=72&d=https%3A%2F%2Fa.slack-edge.com%2Fdf10d%2Fimg%2Favatars%2Fava_0014-72.png",
+            "first_name": "Pat",
+            "real_name": "Pat",
+            "display_name": "Pat",
+            "team": "T01GV7EP2VD",
+            "name": "pat",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "thread_ts": "1751637775.777269",
+        "reply_count": 1,
+        "reply_users_count": 1,
+        "latest_reply": "1751905891.350209",
+        "reply_users": [
+            "U08UZQ2FS2X"
+        ],
+        "replies": [
+            {
+                "user": "U08UZQ2FS2X",
+                "ts": "1751905891.350209"
+            }
+        ],
+        "is_locked": false,
+        "subscribed": false,
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "04qOD",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Hi "
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U02UZPK889Z"
+                            },
+                            {
+                                "type": "text",
+                                "text": ", no update on LLP from me. However from CoComply, we need to develop an MSA and SOW for them to be sent out on Monday. Avi says you have context. Please work with "
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U079XV7CY0M"
+                            },
+                            {
+                                "type": "text",
+                                "text": " on this. Let me know if you need any clarification or assistance. Thanks."
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "reactions": [
+            {
+                "name": "got-it",
+                "users": [
+                    "U02UZPK889Z"
+                ],
+                "count": 1
+            }
+        ]
+    },
+    {
+        "user": "U040TMXT4RM",
+        "type": "message",
+        "ts": "1751643868.405479",
+        "client_msg_id": "73614e27-5336-4bd8-9384-fd9c78215020",
+        "text": "Hi <@U02UZPK889Z> completed the initial structure of repo, working on db and auth setup in repo",
+        "team": "T01GV7EP2VD",
+        "user_team": "T01GV7EP2VD",
+        "source_team": "T01GV7EP2VD",
+        "user_profile": {
+            "avatar_hash": "dc2178d63857",
+            "image_72": "https:\/\/avatars.slack-edge.com\/2023-05-24\/5326151890321_dc2178d63857395c7f7e_72.jpg",
+            "first_name": "Anser",
+            "real_name": "Anser Ali",
+            "display_name": "Anser Ali",
+            "team": "T01GV7EP2VD",
+            "name": "anser7ali",
+            "is_restricted": false,
+            "is_ultra_restricted": false
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "B6So\/",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "text",
+                                "text": "Hi "
+                            },
+                            {
+                                "type": "user",
+                                "user_id": "U02UZPK889Z"
+                            },
+                            {
+                                "type": "text",
+                                "text": " completed the initial structure of repo, working on db and auth setup in repo"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ],
+        "reactions": [
+            {
+                "name": "raised_hands",
+                "users": [
+                    "U02UZPK889Z"
+                ],
+                "count": 1
+            }
+        ]
+    }
+]

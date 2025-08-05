@@ -33,15 +33,15 @@ export const NomaAssistant = () => {
     const loadTeamMetrics = async () => {
       try {
         // Use real Slack export data
-        const exportPath = '/Users/avinashuddaraju/Downloads/Labfox Slack export Jun 18 2025 - Jul 18 2025';
+        const exportPath = '/slack-export/Labfox Slack export Jun 18 2025 - Jul 18 2025';
         const currentDate = new Date();
         const weekString = `${currentDate.getFullYear()}-W${Math.ceil((currentDate.getTime() - new Date(currentDate.getFullYear(), 0, 1).getTime()) / (7 * 24 * 60 * 60 * 1000))}`;
         
-        const metrics = calculateLabfoxTeamHealth(exportPath, weekString);
+        const metrics = await calculateLabfoxTeamHealth(exportPath, weekString);
         setTeamMetrics(metrics);
         
         // Update initial message with metrics
-        setMessages(prev => prev.map(msg => 
+        setMessages(prev => prev.map(msg =>
           msg.id === "1" ? { ...msg, data: { teamMetrics: metrics } } : msg
         ));
       } catch (error) {

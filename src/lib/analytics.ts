@@ -616,27 +616,49 @@ export async function parseSlackExportData(exportPath: string): Promise<SlackExp
     // Read messages from each channel with better error handling
     const messages: { [channelId: string]: SlackExportMessage[] } = {};
     
-    channelsData.forEach(channel => {
-      const channelDir = `${exportPath}/${channel.name}`;
-      try {
-        // In browser environment, we can't use fs, so we'll need to handle this differently
-        // For now, we'll skip file system operations and return empty messages
-        const channelMessages: SlackExportMessage[] = [];
-        
-        // Note: In a real browser implementation, you would need to:
-        // 1. Have the files served by a web server
-        // 2. Use fetch() to load each JSON file
-        // 3. Or have the data pre-loaded/bundled
-        
-        console.warn(`Cannot read channel directory ${channelDir} in browser environment`);
-                
-                // Filter out system messages and only include actual user messages
-        messages[channel.id] = channelMessages;
-      } catch (error) {
-        console.warn(`Could not read messages for channel ${channel.name}:`, error);
-        messages[channel.id] = [];
+    // List of known date files based on the actual Slack export structure
+    const knownDateFiles = [
+      '2025-06-25.json', '2025-06-26.json', '2025-07-02.json', '2025-07-03.json',
+      '2025-07-04.json', '2025-07-07.json', '2025-07-08.json', '2025-07-09.json',
+      '2025-07-11.json', '2025-07-14.json', '2025-07-16.json'
+    ];
+    
+    for (const channel of channelsData) {
+      const channelMessages: SlackExportMessage[] = [];
+      
+      // Try to fetch message files for this channel
+      for (const dateFile of knownDateFiles) {
+        try {
+          const messageFileUrl = `${exportPath}/${channel.name}/${dateFile}`;
+          const response = await fetch(messageFileUrl);
+          
+          if (response.ok) {
+            const dayMessages = await response.json() as SlackExportMessage[];
+            // Filter out system messages and only include actual user messages
+            const userMessages = dayMessages.filter(msg =>
+              msg.type === 'message' &&
+              msg.user &&
+              msg.text &&
+              msg.text.trim().length > 0 &&
+              !msg.subtype // Exclude system messages like joins, leaves, etc.
+            );
+            channelMessages.push(...userMessages);
+            console.log(`✅ Loaded ${userMessages.length} messages from ${channel.name}/${dateFile}`);
+          }
+        } catch (error) {
+          // File doesn't exist or can't be loaded - this is expected for many combinations
+          // Only log if it's an unexpected error
+          if (error instanceof TypeError && error.message.includes('Failed to fetch')) {
+            // Expected - file doesn't exist
+          } else {
+            console.warn(`Could not load ${channel.name}/${dateFile}:`, error);
+          }
+        }
       }
-    });
+      
+      messages[channel.id] = channelMessages;
+      console.log(`📊 Channel ${channel.name}: ${channelMessages.length} total messages loaded`);
+    }
     
     return {
       users: usersData,

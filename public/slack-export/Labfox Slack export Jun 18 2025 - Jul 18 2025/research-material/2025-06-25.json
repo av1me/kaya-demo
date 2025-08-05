@@ -1,0 +1,47 @@
+[
+    {
+        "user": "U092VN7NYAE",
+        "type": "message",
+        "ts": "1750864239.261979",
+        "bot_id": "B092VN7NH0S",
+        "app_id": "A0939DUBBB3",
+        "text": ":test_tube: Testing channel access (this is an automated test)",
+        "team": "T01GV7EP2VD",
+        "bot_profile": {
+            "id": "B092VN7NH0S",
+            "deleted": false,
+            "name": "DeltaGen Interview Notifications",
+            "updated": 1750790028,
+            "app_id": "A0939DUBBB3",
+            "user_id": "U092VN7NYAE",
+            "icons": {
+                "image_36": "https:\/\/a.slack-edge.com\/80588\/img\/plugins\/app\/bot_36.png",
+                "image_48": "https:\/\/a.slack-edge.com\/80588\/img\/plugins\/app\/bot_48.png",
+                "image_72": "https:\/\/a.slack-edge.com\/80588\/img\/plugins\/app\/service_72.png"
+            },
+            "team_id": "T0741BQ9MGU"
+        },
+        "blocks": [
+            {
+                "type": "rich_text",
+                "block_id": "79D",
+                "elements": [
+                    {
+                        "type": "rich_text_section",
+                        "elements": [
+                            {
+                                "type": "emoji",
+                                "name": "test_tube",
+                                "unicode": "1f9ea"
+                            },
+                            {
+                                "type": "text",
+                                "text": " Testing channel access (this is an automated test)"
+                            }
+                        ]
+                    }
+                ]
+            }
+        ]
+    }
+]

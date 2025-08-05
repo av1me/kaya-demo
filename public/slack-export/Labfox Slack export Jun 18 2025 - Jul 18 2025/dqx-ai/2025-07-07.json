@@ -1,0 +1,74 @@
+[
+    {
+        "text": "",
+        "files": [
+            {
+                "id": "F094RCYR75G",
+                "created": 1751937341,
+                "timestamp": 1751937340,
+                "name": "AWS Budgets: Monthly-Spend-Limit has exceeded your alert threshold",
+                "title": "AWS Budgets: Monthly-Spend-Limit has exceeded your alert threshold",
+                "mimetype": "text\/html",
+                "filetype": "email",
+                "pretty_type": "Email",
+                "user": "USLACKBOT",
+                "user_team": "T01GV7EP2VD",
+                "editable": true,
+                "size": 17221,
+                "mode": "email",
+                "is_external": false,
+                "external_type": "",
+                "is_public": true,
+                "public_url_shared": false,
+                "display_as_bot": true,
+                "username": "AWS Cost Alert",
+                "url_private": "https:\/\/files.slack.com\/files-pri\/T01GV7EP2VD-F094RCYR75G\/aws_budgets__monthly-spend-limit_has_exceeded_your_alert_threshold?t=xoxe-1573252784999-9219036033317-9233863466753-9f10738392ed5727397db8138761ca77",
+                "url_private_download": "https:\/\/files.slack.com\/files-pri\/T01GV7EP2VD-F094RCYR75G\/download\/aws_budgets__monthly-spend-limit_has_exceeded_your_alert_threshold?t=xoxe-1573252784999-9219036033317-9233863466753-9f10738392ed5727397db8138761ca77",
+                "permalink": "https:\/\/labfox.slack.com\/files\/U01HA6U301H\/F094RCYR75G\/aws_budgets__monthly-spend-limit_has_exceeded_your_alert_threshold",
+                "permalink_public": "https:\/\/slack-files.com\/T01GV7EP2VD-F094RCYR75G-fbb7603ce0",
+                "subject": "AWS Budgets: Monthly-Spend-Limit has exceeded your alert threshold",
+                "to": [
+                    {
+                        "address": "",
+                        "name": "AWS Cost Alert",
+                        "original": "AWS Cost Alert <>"
+                    }
+                ],
+                "from": [
+                    {
+                        "address": "budgets@costalerts.amazonaws.com",
+                        "name": "",
+                        "original": "budgets@costalerts.amazonaws.com"
+                    }
+                ],
+                "cc": [],
+                "attachments": [],
+                "original_attachment_count": 0,
+                "inline_attachment_count": 0,
+                "plain_text": "AWS Budget Notification\t                            July 08, 2025\r\nAWS Account 412381740399\r\n\r\nDear AWS Customer,\r\n\r\nYou requested that we alert you when the ACTUAL Cost associated with your Monthly-Spend-Limit budget is greater than $50.00 for the current month. The month ACTUAL Cost associated with this budget is $51.34. You can find additional details below and by accessing the AWS Budgets dashboard.\r\n\r\nBudget Name: Monthly-Spend-Limit\r\nBudget Type: Cost\r\nBudgeted Amount: $50.00\r\nAlert Type: ACTUAL\r\nAlert Threshold: > $50.00\r\nACTUAL Amount: $51.34",
+                "preview": "<table style=\"width: 100%;\">            <tr>                <td align=\"right\">                    <img style=\"display: block;\" height=\"35\" src=\"https:\/\/slack-imgs.com\/?url=https%3A%2F%2Fd1.awsstatic.com%2Flogos%2Faws-logo%2Ffull-color%2FAWS-Logo_Full-Color_100x60.5e9a396f44e8a57089a6c62488cd51517ae74f4b.png\" align=\"right\" alt=\"Description: awslogo\" title=\"Description: awslogo\">                <\/td>            <\/tr>            <tr>                <td>                    <p style=\"border-top: 7px solid #FFC000; font-size: 1px; margin-bottom: 6px; margin-top: 0px; text-align: center;\">&nbsp;<\/p>                 <\/td>            <\/tr>         <\/table>         <br>         <table style=\"width: 100%;\">             <tr>                <td>                    AWS Budget Notification                <\/td>                <td align=\"right\">                    July 08, 2025                <\/td>            <\/tr>            <tr>                <td>                    AWS Account <i>412381740399<\/i>                <\/td>            <\/tr>          <\/table>          <br>          <table style=\"width: 100%;\">            <tr>                <td>Dear AWS Customer, <\/td>            <\/tr>         <\/table>         <br>         <table style=\"width: 100%;\">            <tr>                <td>                    You requested that we alert you when the <b>actual cost<\/b> associated with your <i>Monthly-Spend-Limit<\/i> budget <b>exceeds  $50.00<\/b> for the current month. The month <b>actual cost<\/b> associated with this budget is <b>$51.34<\/b>. You can find additional details below and by accessing the AWS Budgets dashboard.                <\/td>            <\/tr>        <\/table>        <br>        <table style=\"border-collapse: collapse; max-width: 800px; width: 100%;\">            <tr align=\"left\" bgcolor=\"#CCCCCC\">                <td style=\"border: 1px solid #CCCCCC; padding: 5px 10px;\">                    Bud<\/td><\/tr><\/table>",
+                "preview_plain_text": "AWS Budget Notification\t                            July 08, 2025\r\nAWS Account 412381740399\r\n\r\nDear AWS Customer,\r\n\r\nYou requested that we alert you when the ACTUAL Cost associated with your Monthly-Spend-Limit budget is greater than $50.00 for the current month. The month ACTUAL Cost associated with this budget is $51.34. You can find additional details below and by accessing the AWS Budgets dashboard.\r\n\r\nBudget Name: Monthly-Spend-Limit\r\nBudget Type: Cost\r\nBudgeted Amount: $50.00\r\nAlert Type: ",
+                "headers": {
+                    "date": "Tue, 8 Jul 2025 01:15:40 +0000",
+                    "in_reply_to": null,
+                    "reply_to": null,
+                    "message_id": "<01000197e79a5294-0ddacc56-dee3-47fa-8f5e-18b06ded5f2a-000000@email.amazonses.com>"
+                },
+                "has_more": true,
+                "sent_to_self": false,
+                "bot_id": "B08J5D2UR6D",
+                "is_starred": false,
+                "skipped_shares": true,
+                "app_id": "A0112L5RZ5E",
+                "has_rich_preview": false,
+                "file_access": "visible"
+            }
+        ],
+        "upload": true,
+        "user": "USLACKBOT",
+        "display_as_bot": true,
+        "bot_id": "B08J5D2UR6D",
+        "type": "message",
+        "ts": "1751937341.580579"
+    }
+]

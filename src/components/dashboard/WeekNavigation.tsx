@@ -25,7 +25,7 @@ export function WeekNavigation({
     const loadAvailableWeeks = async () => {
       try {
         // Use API to get available weeks
-        const exportPath = '/Users/avinashuddaraju/Downloads/Labfox Slack export Jun 18 2025 - Jul 18 2025';
+        const exportPath = '/slack-export/Labfox Slack export Jun 18 2025 - Jul 18 2025';
         const response = await SlackAPI.getAvailableWeeks(exportPath);
         
         if (response.success && response.data) {

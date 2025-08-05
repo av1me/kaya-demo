@@ -34,7 +34,7 @@ const Dashboard = () => {
       
       try {
         // Use API to get team health metrics
-        const exportPath = '/Users/avinashuddaraju/Downloads/Labfox Slack export Jun 18 2025 - Jul 18 2025';
+        const exportPath = '/slack-export/Labfox Slack export Jun 18 2025 - Jul 18 2025';
         const weekString = `${selectedWeek.getFullYear()}-W${Math.ceil((selectedWeek.getTime() - new Date(selectedWeek.getFullYear(), 0, 1).getTime()) / (7 * 24 * 60 * 60 * 1000))}`;
         
         console.log("📊 Dashboard: Calling SlackAPI.getTeamHealth with:", { exportPath, weekString });

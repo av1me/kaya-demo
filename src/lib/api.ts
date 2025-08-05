@@ -1,5 +1,22 @@
 // API endpoints for Slack data fetching
 import { supabase } from './supabaseClient';
+// Slack export Option A parser (Node.js only)
+import {
+  getAvailableWeeks as exportGetWeeks,
+  computeWeeklyMetrics,
+  getInsightsFromMetrics,
+  getRecommendationsFromMetrics,
+  getResearchSummaryFromMetrics,
+} from './slackExport';
+// Browser-compatible analytics functions
+import {
+  calculateTeamHealthFromRealData,
+  generateInsightsFromRealData,
+  generateLabfoxSpecificInsights,
+  getAvailableWeeksFromSlackData,
+} from './analytics';
+// Recommendation engine
+import { generateLabfoxSpecificRecommendations } from './recommendationEngine';
 
 // Error handling types
 export interface APIError {
@@ -111,11 +128,12 @@ export class SlackAPI {
   // Fetch all users from the users table
   static async fetchAllUsers(): Promise<APIResponse<User[]>> {
     try {
-      const { data, error } = await supabase
+      const query = supabase
         .from('users')
         .select('*')
         .eq('is_deleted', false)
         .order('name', { ascending: true });
+      const { data, error } = await query;
 
       if (error) throw error;
 
@@ -131,11 +149,12 @@ export class SlackAPI {
   // Fetch all channels from the channels table
   static async fetchAllChannels(): Promise<APIResponse<Channel[]>> {
     try {
-      const { data, error } = await supabase
+      const query = supabase
         .from('channels')
         .select('*')
         .eq('is_archived', false)
         .order('name', { ascending: true });
+      const { data, error } = await query;
 
       if (error) throw error;
 
@@ -151,12 +170,13 @@ export class SlackAPI {
   // Fetch messages for a given channel
   static async fetchMessagesByChannel(channelId: string, limit: number = 100): Promise<APIResponse<Message[]>> {
     try {
-      const { data, error } = await supabase
+      const query = supabase
         .from('messages')
         .select('*')
         .eq('channel_id', channelId)
         .order('created_at', { ascending: false })
         .limit(limit);
+      const { data, error } = await query;
 
       if (error) throw error;
 
@@ -172,11 +192,12 @@ export class SlackAPI {
   // Fetch user by ID
   static async fetchUserById(userId: string): Promise<APIResponse<User | null>> {
     try {
-      const { data, error } = await supabase
+      const query = supabase
         .from('users')
         .select('*')
         .eq('id', userId)
         .single();
+      const { data, error } = await query;
 
       if (error) {
         if (error.code === 'PGRST116') {
@@ -201,11 +222,12 @@ export class SlackAPI {
   // Fetch reactions for a message
   static async fetchReactionsByMessage(messageTs: string): Promise<APIResponse<Reaction[]>> {
     try {
-      const { data, error } = await supabase
+      const query = supabase
         .from('reactions')
         .select('*')
         .eq('message_ts', messageTs)
         .order('created_at', { ascending: true });
+      const { data, error } = await query;
 
       if (error) throw error;
 
@@ -221,11 +243,12 @@ export class SlackAPI {
   // Fetch files uploaded by a user
   static async fetchFilesByUser(userId: string): Promise<APIResponse<File[]>> {
     try {
-      const { data, error } = await supabase
+      const query = supabase
         .from('files')
         .select('*')
         .eq('user_id', userId)
         .order('created_at', { ascending: false });
+      const { data, error } = await query;
 
       if (error) throw error;
 
@@ -241,11 +264,12 @@ export class SlackAPI {
   // Fetch channel members for a channel
   static async fetchChannelMembers(channelId: string): Promise<APIResponse<ChannelMember[]>> {
     try {
-      const { data, error } = await supabase
+      const query = supabase
         .from('channel_members')
         .select('*')
         .eq('channel_id', channelId)
         .order('joined_at', { ascending: true });
+      const { data, error } = await query;
 
       if (error) throw error;
 
@@ -261,7 +285,7 @@ export class SlackAPI {
   // Fetch channels that a user is a member of
   static async fetchUserChannels(userId: string): Promise<APIResponse<Channel[]>> {
     try {
-      const { data, error } = await supabase
+      const query = supabase
         .from('channel_members')
         .select(`
           channels (
@@ -282,6 +306,7 @@ export class SlackAPI {
           )
         `)
         .eq('user_id', userId);
+      const { data, error } = await query;
 
       if (error) throw error;
 
@@ -298,7 +323,7 @@ export class SlackAPI {
   // Fetch messages with user and channel information (with joins)
   static async fetchMessagesWithDetails(channelId: string, limit: number = 50): Promise<APIResponse<any[]>> {
     try {
-      const { data, error } = await supabase
+      const builder: any = supabase
         .from('messages')
         .select(`
           *,
@@ -314,7 +339,8 @@ export class SlackAPI {
             name,
             is_private
           )
-        `)
+        `);
+      const { data, error } = await builder
         .eq('channel_id', channelId)
         .order('created_at', { ascending: false })
         .limit(limit);
@@ -330,140 +356,289 @@ export class SlackAPI {
     }
   }
 
+  // Helper function to detect if path is web-served
+  private static isWebPath(exportPath: string): boolean {
+    return exportPath.startsWith('/') && !exportPath.startsWith('/Users/') && !exportPath.startsWith('/home/');
+  }
+
   // Get team health metrics for a specific week
   static async getTeamHealth(exportPath: string, weekString: string): Promise<APIResponse<any>> {
-    // Stub implementation returning mock data
-    const mockTeamHealth = {
-      realTeam: 82,
-      compellingDirection: 85,
-      enablingStructure: 78,
-      supportiveContext: 80,
-      expertCoaching: 75,
-      psychologicalSafety: 78,
-      helpSeeking: 72,
-      errorReporting: 68,
-      innovationBehavior: 75,
-      responseTime: 2.5,
-      messageFrequency: 45,
-      collaborationIndex: 78,
-      networkDensity: 0.65,
-      centralization: 0.35,
-      burnoutRisk: 25,
-      weekendActivity: 15,
-      afterHoursActivity: 20,
-      stressIndicators: 30,
-      teamStage: 'performing',
-      earlyWarnings: [],
-      riskLevel: 'low'
-    };
-
-    return Promise.resolve({
-      success: true,
-      data: mockTeamHealth
-    });
+    try {
+      if (exportPath) {
+        console.log(`🔍 SlackAPI.getTeamHealth: Processing path "${exportPath}" for week ${weekString}`);
+        
+        if (this.isWebPath(exportPath)) {
+          // Use browser-compatible analytics functions for web-served paths
+          console.log('📊 Using browser-compatible analytics functions');
+          const teamHealth = await calculateTeamHealthFromRealData(exportPath, weekString);
+          return { success: true, data: teamHealth };
+        } else {
+          // Use Node.js filesystem functions for absolute paths
+          console.log('📁 Using Node.js filesystem functions');
+          const metrics = computeWeeklyMetrics(exportPath, weekString);
+          // Map to existing shape with sensible defaults
+          const teamHealth = {
+            realTeam: 80,
+            compellingDirection: 80,
+            enablingStructure: 75,
+            supportiveContext: 78,
+            expertCoaching: 72,
+            psychologicalSafety: Math.max(60, 90 - Math.round(metrics.participation.giniCoefficient * 40)),
+            helpSeeking: Math.min(90, 50 + Math.round((metrics.mentionsGraph.edges.length || 0) / 2)),
+            errorReporting: 68,
+            innovationBehavior: 75,
+            responseTime: metrics.responsiveness.avgFirstReplyHours ?? 0,
+            messageFrequency: metrics.activity.totalMessages,
+            collaborationIndex: Math.min(100, 50 + Object.keys(metrics.activity.byChannel).length * 5),
+            networkDensity: Object.keys(metrics.activity.byUser).length > 1
+              ? Math.min(1, metrics.mentionsGraph.edges.length / (Object.keys(metrics.activity.byUser).length ** 2))
+              : 0,
+            centralization: Math.min(1, metrics.participation.giniCoefficient),
+            burnoutRisk: 25,
+            weekendActivity: 15,
+            afterHoursActivity: 20,
+            stressIndicators: metrics.opsAlerts.length > 0 ? 40 : 20,
+            teamStage: 'performing',
+            earlyWarnings: metrics.opsAlerts.length > 0 ? ['Operational alerts detected'] : [],
+            riskLevel: metrics.opsAlerts.length > 0 ? 'medium' : 'low'
+          };
+          return { success: true, data: teamHealth };
+        }
+      }
+      // Fallback to stub if no exportPath
+      const mockTeamHealth = {
+        realTeam: 82,
+        compellingDirection: 85,
+        enablingStructure: 78,
+        supportiveContext: 80,
+        expertCoaching: 75,
+        psychologicalSafety: 78,
+        helpSeeking: 72,
+        errorReporting: 68,
+        innovationBehavior: 75,
+        responseTime: 2.5,
+        messageFrequency: 45,
+        collaborationIndex: 78,
+        networkDensity: 0.65,
+        centralization: 0.35,
+        burnoutRisk: 25,
+        weekendActivity: 15,
+        afterHoursActivity: 20,
+        stressIndicators: 30,
+        teamStage: 'performing',
+        earlyWarnings: [],
+        riskLevel: 'low'
+      };
+      return { success: true, data: mockTeamHealth };
+    } catch (error: any) {
+      return this.handleError(error, 'getTeamHealth');
+    }
   }
 
   // Get available weeks from the export path
   static async getAvailableWeeks(exportPath: string): Promise<APIResponse<string[]>> {
-    // Stub implementation returning mock data
-    const mockWeeks = ['2025-W28', '2025-W27', '2025-W26', '2025-W25'];
-
-    return Promise.resolve({
-      success: true,
-      data: mockWeeks
-    });
+    try {
+      if (exportPath) {
+        console.log(`🔍 SlackAPI.getAvailableWeeks: Processing path "${exportPath}"`);
+        
+        if (this.isWebPath(exportPath)) {
+          // Use browser-compatible analytics functions for web-served paths
+          console.log('📊 Using browser-compatible analytics functions');
+          const weeks = await getAvailableWeeksFromSlackData(exportPath);
+          // Sort descending (latest first) for UI convenience
+          const sorted = weeks.slice().sort((a, b) => (a < b ? 1 : a > b ? -1 : 0));
+          return { success: true, data: sorted };
+        } else {
+          // Use Node.js filesystem functions for absolute paths
+          console.log('📁 Using Node.js filesystem functions');
+          const weeks = exportGetWeeks(exportPath);
+          // Sort descending (latest first) for UI convenience
+          const sorted = weeks.slice().sort((a, b) => (a < b ? 1 : a > b ? -1 : 0));
+          return { success: true, data: sorted };
+        }
+      }
+      const mockWeeks = ['2025-W28', '2025-W27', '2025-W26', '2025-W25'];
+      return { success: true, data: mockWeeks };
+    } catch (error: any) {
+      return this.handleError(error, 'getAvailableWeeks');
+    }
   }
 
   // Get insights for a specific week
   static async getInsights(exportPath: string, weekString: string): Promise<APIResponse<any[]>> {
-    // Stub implementation returning mock data
-    const mockInsights = [
-      {
-        id: 'communication-patterns',
-        title: 'Healthy Communication Patterns',
-        description: 'Team shows consistent communication with good response times averaging 2.5 hours.',
-        severity: 'info',
-        confidence: 85,
-        category: 'communication',
-        metrics: { responseTime: 2.5, messageFrequency: 45 }
-      },
-      {
-        id: 'psychological-safety',
-        title: 'Strong Psychological Safety',
-        description: 'Team members feel comfortable sharing ideas and asking for help.',
-        severity: 'info',
-        confidence: 78,
-        category: 'culture',
-        metrics: { psychologicalSafety: 78, helpSeeking: 72 }
-      },
-      {
-        id: 'burnout-risk',
-        title: 'Low Burnout Risk',
-        description: 'Burnout risk remains low at 25%, indicating healthy work-life balance.',
-        severity: 'info',
-        confidence: 90,
-        category: 'wellbeing',
-        metrics: { burnoutRisk: 25, weekendActivity: 15 }
+    try {
+      if (exportPath) {
+        console.log(`🔍 SlackAPI.getInsights: Processing path "${exportPath}" for week ${weekString}`);
+        
+        if (this.isWebPath(exportPath)) {
+          // Use browser-compatible analytics functions for web-served paths
+          console.log('📊 Using browser-compatible analytics functions');
+          const insights = await generateLabfoxSpecificInsights(exportPath, weekString);
+          const formattedInsights = insights.map((insight, idx) => ({
+            id: insight.id || `insight-${idx}`,
+            title: insight.title,
+            description: insight.description,
+            severity: insight.severity || 'info',
+            confidence: insight.confidence || 80,
+            category: insight.category,
+            tool: insight.tool,
+            metrics: insight.metric ? { [insight.metric.split(' ')[0]]: insight.metric } : {}
+          }));
+          return { success: true, data: formattedInsights };
+        } else {
+          // Use Node.js filesystem functions for absolute paths
+          console.log('📁 Using Node.js filesystem functions');
+          const metrics = computeWeeklyMetrics(exportPath, weekString);
+          const insights = getInsightsFromMetrics(metrics).map((i, idx) => ({
+            id: `insight-${idx}`,
+            title: i.title,
+            description: i.detail,
+            severity: 'info',
+            confidence: 80,
+            category: 'auto',
+            metrics: {
+              totalMessages: metrics.activity.totalMessages,
+              avgFirstReplyHours: metrics.responsiveness.avgFirstReplyHours,
+              gini: metrics.participation.giniCoefficient,
+            }
+          }));
+          return { success: true, data: insights };
+        }
       }
-    ];
-
-    return Promise.resolve({
-      success: true,
-      data: mockInsights
-    });
+      // Fallback to mocks
+      const mockInsights = [
+        {
+          id: 'communication-patterns',
+          title: 'Healthy Communication Patterns',
+          description: 'Team shows consistent communication with good response times averaging 2.5 hours.',
+          severity: 'info',
+          confidence: 85,
+          category: 'communication',
+          metrics: { responseTime: 2.5, messageFrequency: 45 }
+        },
+        {
+          id: 'psychological-safety',
+          title: 'Strong Psychological Safety',
+          description: 'Team members feel comfortable sharing ideas and asking for help.',
+          severity: 'info',
+          confidence: 78,
+          category: 'culture',
+          metrics: { psychologicalSafety: 78, helpSeeking: 72 }
+        },
+        {
+          id: 'burnout-risk',
+          title: 'Low Burnout Risk',
+          description: 'Burnout risk remains low at 25%, indicating healthy work-life balance.',
+          severity: 'info',
+          confidence: 90,
+          category: 'wellbeing',
+          metrics: { burnoutRisk: 25, weekendActivity: 15 }
+        }
+      ];
+      return { success: true, data: mockInsights };
+    } catch (error: any) {
+      return this.handleError(error, 'getInsights');
+    }
   }
 
   // Get recommendations for a specific week
   static async getRecommendations(exportPath: string, weekString: string): Promise<APIResponse<any[]>> {
-    // Stub implementation returning mock data
-    const mockRecommendations = [
-      {
-        id: 'focus-time',
-        title: 'Implement Focus Time Blocks',
-        description: 'Consider implementing protected focus time to improve productivity.',
-        priority: 'medium',
-        impact: 'High',
-        timeframe: '2 weeks',
-        science: 'Research shows that protected focus time can improve productivity by 40%.',
-        implementation: [
-          'Schedule 2-hour focus blocks',
-          'Set up automatic status updates',
-          'Create focus time guidelines',
-          'Monitor productivity metrics'
-        ],
-        successIndicators: ['Reduced interruptions', 'Higher code quality', 'Improved focus'],
-        riskFactors: ['Initial resistance', 'Schedule conflicts'],
-        learnMore: ['Focus Time Best Practices', 'Productivity Research']
+    try {
+      if (exportPath) {
+        console.log(`🔍 SlackAPI.getRecommendations: Processing path "${exportPath}" for week ${weekString}`);
+        
+        if (this.isWebPath(exportPath)) {
+          // Use browser-compatible analytics functions for web-served paths
+          console.log('📊 Using browser-compatible analytics functions');
+          const teamHealth = await calculateTeamHealthFromRealData(exportPath, weekString);
+          const insights = await generateLabfoxSpecificInsights(exportPath, weekString);
+          const recs = generateLabfoxSpecificRecommendations(exportPath, weekString, teamHealth, insights);
+          return { success: true, data: recs };
+        } else {
+          // Use Node.js filesystem functions for absolute paths
+          console.log('📁 Using Node.js filesystem functions');
+          const metrics = computeWeeklyMetrics(exportPath, weekString);
+          const recs = getRecommendationsFromMetrics(metrics).map((r, idx) => ({
+            id: `rec-${idx}`,
+            title: r.title,
+            description: r.action,
+            priority: 'medium',
+            impact: 'Medium',
+            timeframe: '1-2 weeks',
+            science: 'Derived from team communication signals in Slack export.',
+            implementation: [],
+            successIndicators: [],
+            riskFactors: [],
+            learnMore: []
+          }));
+          return { success: true, data: recs };
+        }
       }
-    ];
-
-    return Promise.resolve({
-      success: true,
-      data: mockRecommendations
-    });
+      const mockRecommendations = [
+        {
+          id: 'focus-time',
+          title: 'Implement Focus Time Blocks',
+          description: 'Consider implementing protected focus time to improve productivity.',
+          priority: 'medium',
+          impact: 'High',
+          timeframe: '2 weeks',
+          science: 'Research shows that protected focus time can improve productivity by 40%.',
+          implementation: [
+            'Schedule 2-hour focus blocks',
+            'Set up automatic status updates',
+            'Create focus time guidelines',
+            'Monitor productivity metrics'
+          ],
+          successIndicators: ['Reduced interruptions', 'Higher code quality', 'Improved focus'],
+          riskFactors: ['Initial resistance', 'Schedule conflicts'],
+          learnMore: ['Focus Time Best Practices', 'Productivity Research']
+        }
+      ];
+      return { success: true, data: mockRecommendations };
+    } catch (error: any) {
+      return this.handleError(error, 'getRecommendations');
+    }
   }
 
   // Get podcast data for a specific week
   static async getPodcastData(exportPath: string, weekString: string): Promise<APIResponse<any>> {
-    // Stub implementation returning mock data
-    const mockPodcastData = {
-      episode: {
-        title: 'Team Health Excellence',
-        date: 'July 14, 2025',
-        duration: '25 min',
-        summary: 'Labfox team shows improved communication patterns with reduced response times. Weekend activity has decreased by 15%, and psychological safety scores are trending upward.',
-        status: weekString === '2025-W28' ? 'new' : 'completed'
-      },
-      recent: [
-        { title: 'Communication Optimization', date: 'July 7', duration: '23 min' },
-        { title: 'Growth Phase Management', date: 'June 30', duration: '26 min' },
-        { title: 'Team Integration Success', date: 'June 23', duration: '24 min' }
-      ]
-    };
-
-    return Promise.resolve({
-      success: true,
-      data: mockPodcastData
-    });
+    try {
+      if (exportPath) {
+        // Derive a short narrative from metrics for the "episode"
+        const metrics = computeWeeklyMetrics(exportPath, weekString);
+        const insights = getInsightsFromMetrics(metrics);
+        const summary =
+          insights.map(i => `${i.title}: ${i.detail}`).slice(0, 3).join(' ');
+        const mockLike = {
+          episode: {
+            title: 'Weekly Team Signals',
+            date: weekString,
+            duration: '8 min',
+            summary,
+            status: 'new'
+          },
+          recent: []
+        };
+        return { success: true, data: mockLike };
+      }
+      // Fallback stub
+      const mockPodcastData = {
+        episode: {
+          title: 'Team Health Excellence',
+          date: 'July 14, 2025',
+          duration: '25 min',
+          summary: 'Labfox team shows improved communication patterns with reduced response times. Weekend activity has decreased by 15%, and psychological safety scores are trending upward.',
+          status: weekString === '2025-W28' ? 'new' : 'completed'
+        },
+        recent: [
+          { title: 'Communication Optimization', date: 'July 7', duration: '23 min' },
+          { title: 'Growth Phase Management', date: 'June 30', duration: '26 min' },
+          { title: 'Team Integration Success', date: 'June 23', duration: '24 min' }
+        ]
+      };
+      return { success: true, data: mockPodcastData };
+    } catch (error: any) {
+      return this.handleError(error, 'getPodcastData');
+    }
   }
 }
