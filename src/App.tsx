@@ -5,6 +5,7 @@ import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Component, ErrorInfo, ReactNode } from "react";
 import Dashboard from "./pages/Dashboard";
+import Index from "./pages/Index";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -46,7 +47,7 @@ class ErrorBoundary extends Component<
 }
 
 const App = () => {
-  console.log("🚀 App: Component initializing - Direct Dashboard Access");
+  console.log("🚀 App: Component initializing - No Authentication Required");
   
   return (
     <ErrorBoundary>
@@ -56,7 +57,7 @@ const App = () => {
           <Sonner />
           <BrowserRouter>
             <Routes>
-              <Route path="/" element={<Navigate to="/dashboard" replace />} />
+              <Route path="/" element={<Index />} />
               <Route path="/dashboard" element={<Dashboard />} />
               {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
               <Route path="*" element={<NotFound />} />

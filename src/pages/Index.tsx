@@ -16,8 +16,8 @@ const Index = () => {
             </div>
             <span className="text-xl font-bold">Noma</span>
           </div>
-          <Button variant="outline" onClick={() => navigate("/auth")}>
-            Sign In
+          <Button variant="outline" onClick={() => navigate("/dashboard")}>
+            Dashboard
           </Button>
         </div>
       </header>
@@ -37,7 +37,7 @@ const Index = () => {
           
           <Button 
             size="lg" 
-            onClick={() => navigate("/auth")}
+            onClick={() => navigate("/dashboard")}
             className="bg-gradient-primary hover:opacity-90 text-lg px-8 py-6 h-auto"
           >
             Get Started for Free
