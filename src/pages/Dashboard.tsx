@@ -1,10 +1,8 @@
 import { useState, useEffect } from "react";
-import { useNavigate } from "react-router-dom";
 import { startOfWeek } from "date-fns";
 import { Button } from "@/components/ui/button";
 import { Avatar, AvatarFallback, AvatarImage } from "@/components/ui/avatar";
-import { LogOut, Info } from "lucide-react";
-import { useAuth } from "@/contexts/AuthContext";
+import { Info } from "lucide-react";
 import { PodcastSection } from "@/components/dashboard/PodcastSection";
 import { InsightsSection } from "@/components/dashboard/InsightsSection";
 import { RecommendationsSection } from "@/components/dashboard/RecommendationsSection";
@@ -18,9 +16,7 @@ import { type TeamHealthMetrics } from "@/lib/analytics";
 import { getMostRecentWeekWithData, parseWeekString, getWeekStringFromDate } from "@/lib/slackDataUtils";
 
 const Dashboard = () => {
-  console.log("📊 Dashboard: Component initializing");
-  const navigate = useNavigate();
-  const { user, logout } = useAuth();
+  console.log("📊 Dashboard: Component initializing - No Authentication Required");
   
   // Initialize with the most recent week that has actual data
   const [selectedWeek, setSelectedWeek] = useState(() => {
@@ -78,17 +74,6 @@ const Dashboard = () => {
     loadTeamMetrics();
   }, [selectedWeek]);
 
-  const handleLogout = () => {
-    console.log("📊 Dashboard: Logout clicked");
-    logout();
-    navigate("/auth");
-  };
-
-  // Get user initials for avatar
-  const getUserInitials = (email: string) => {
-    return email.split('@')[0].slice(0, 2).toUpperCase();
-  };
-
   console.log("📊 Dashboard: About to render, isLoading:", isLoading, "teamMetrics:", teamMetrics);
 
   return (
@@ -99,27 +84,17 @@ const Dashboard = () => {
           <div className="flex items-center justify-between">
             <div className="flex items-center space-x-4">
               <img src="/lovable-uploads/f8919b0a-2e40-453d-abbd-68c3b8532d76.png" alt="Kayla Logo" className="h-10 w-auto" />
+              <div className="text-sm text-muted-foreground">
+                Kaya CEO Dashboard
+              </div>
             </div>
             <div className="flex items-center space-x-2">
-              {user && (
-                <div className="text-sm text-muted-foreground mr-2">
-                  {user.email}
-                  {user.isLabfoxUser && (
-                    <span className="ml-2 px-2 py-1 bg-blue-100 text-blue-800 text-xs rounded-full">
-                      Labfox
-                    </span>
-                  )}
-                </div>
-              )}
               <SettingsDialog />
-              <Button variant="ghost" size="icon" onClick={handleLogout} className="text-muted-foreground hover:text-foreground">
-                <LogOut className="h-5 w-5" />
-              </Button>
               
               <Avatar className="w-9 h-9 ring-2 ring-primary/20 hover:ring-primary/40 transition-all cursor-pointer">
                 <AvatarImage src="" alt="Profile" />
                 <AvatarFallback className="bg-gradient-secondary text-primary font-semibold">
-                  {user ? getUserInitials(user.email) : 'U'}
+                  KA
                 </AvatarFallback>
               </Avatar>
             </div>

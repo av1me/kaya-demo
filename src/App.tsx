@@ -4,11 +4,6 @@ import { TooltipProvider } from "@/components/ui/tooltip";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
 import { Component, ErrorInfo, ReactNode } from "react";
-import { AuthProvider } from "@/contexts/AuthContext";
-import ProtectedRoute from "@/components/ProtectedRoute";
-import Auth from "./pages/Auth";
-import Verify from "./pages/Verify";
-import Onboarding from "./pages/Onboarding";
 import Dashboard from "./pages/Dashboard";
 import NotFound from "./pages/NotFound";
 
@@ -51,42 +46,23 @@ class ErrorBoundary extends Component<
 }
 
 const App = () => {
-  console.log("🚀 App: Component initializing");
+  console.log("🚀 App: Component initializing - Direct Dashboard Access");
   
   return (
     <ErrorBoundary>
       <QueryClientProvider client={queryClient}>
-        <AuthProvider>
-          <TooltipProvider>
-            <Toaster />
-            <Sonner />
-            <BrowserRouter>
-              <Routes>
-                <Route path="/" element={<Navigate to="/auth" replace />} />
-                <Route path="/auth" element={<Auth />} />
-                <Route path="/verify" element={<Verify />} />
-                <Route
-                  path="/onboarding"
-                  element={
-                    <ProtectedRoute>
-                      <Onboarding />
-                    </ProtectedRoute>
-                  }
-                />
-                <Route
-                  path="/dashboard"
-                  element={
-                    <ProtectedRoute>
-                      <Dashboard />
-                    </ProtectedRoute>
-                  }
-                />
-                {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
-                <Route path="*" element={<NotFound />} />
-              </Routes>
-            </BrowserRouter>
-          </TooltipProvider>
-        </AuthProvider>
+        <TooltipProvider>
+          <Toaster />
+          <Sonner />
+          <BrowserRouter>
+            <Routes>
+              <Route path="/" element={<Navigate to="/dashboard" replace />} />
+              <Route path="/dashboard" element={<Dashboard />} />
+              {/* ADD ALL CUSTOM ROUTES ABOVE THE CATCH-ALL "*" ROUTE */}
+              <Route path="*" element={<NotFound />} />
+            </Routes>
+          </BrowserRouter>
+        </TooltipProvider>
       </QueryClientProvider>
     </ErrorBoundary>
   );
