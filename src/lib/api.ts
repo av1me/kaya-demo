@@ -11,6 +11,16 @@ import {
 } from './analytics';
 // Recommendation engine
 import { generateLabfoxSpecificRecommendations } from './recommendationEngine';
+import { generatePodcastScript } from './podcastGenerator';
+
+// Helper function to get white paper context
+const getWhitePaperContext = () => {
+  return {
+    title: "Workplace Team Health Analytics and Early Warning Systems",
+    coreThesis: "The convergence of organizational psychology, digital workplace analytics, and machine learning now enables organizations to detect team dysfunction before it impacts performance.",
+    relevantPrinciple: "The data shows the 'what,' the Slack conversations show the 'why,' and the white paper gives us the 'how' to think about it."
+  };
+};
 
 // Error handling types
 export interface APIError {
@@ -122,12 +132,11 @@ export class SlackAPI {
   // Fetch all users from the users table
   static async fetchAllUsers(): Promise<APIResponse<User[]>> {
     try {
-      const query = supabase
+      const { data, error } = await supabase
         .from('users')
         .select('*')
         .eq('is_deleted', false)
         .order('name', { ascending: true });
-      const { data, error } = await query;
 
       if (error) throw error;
 
@@ -143,12 +152,11 @@ export class SlackAPI {
   // Fetch all channels from the channels table
   static async fetchAllChannels(): Promise<APIResponse<Channel[]>> {
     try {
-      const query = supabase
+      const { data, error } = await supabase
         .from('channels')
         .select('*')
         .eq('is_archived', false)
         .order('name', { ascending: true });
-      const { data, error } = await query;
 
       if (error) throw error;
 
@@ -164,13 +172,12 @@ export class SlackAPI {
   // Fetch messages for a given channel
   static async fetchMessagesByChannel(channelId: string, limit: number = 100): Promise<APIResponse<Message[]>> {
     try {
-      const query = supabase
+      const { data, error } = await supabase
         .from('messages')
         .select('*')
         .eq('channel_id', channelId)
         .order('created_at', { ascending: false })
         .limit(limit);
-      const { data, error } = await query;
 
       if (error) throw error;
 
@@ -186,12 +193,11 @@ export class SlackAPI {
   // Fetch user by ID
   static async fetchUserById(userId: string): Promise<APIResponse<User | null>> {
     try {
-      const query = supabase
+      const { data, error } = await supabase
         .from('users')
         .select('*')
         .eq('id', userId)
         .single();
-      const { data, error } = await query;
 
       if (error) {
         if (error.code === 'PGRST116') {
@@ -216,12 +222,11 @@ export class SlackAPI {
   // Fetch reactions for a message
   static async fetchReactionsByMessage(messageTs: string): Promise<APIResponse<Reaction[]>> {
     try {
-      const query = supabase
+      const { data, error } = await supabase
         .from('reactions')
         .select('*')
         .eq('message_ts', messageTs)
         .order('created_at', { ascending: true });
-      const { data, error } = await query;
 
       if (error) throw error;
 
@@ -237,12 +242,11 @@ export class SlackAPI {
   // Fetch files uploaded by a user
   static async fetchFilesByUser(userId: string): Promise<APIResponse<File[]>> {
     try {
-      const query = supabase
+      const { data, error } = await supabase
         .from('files')
         .select('*')
         .eq('user_id', userId)
         .order('created_at', { ascending: false });
-      const { data, error } = await query;
 
       if (error) throw error;
 
@@ -258,12 +262,11 @@ export class SlackAPI {
   // Fetch channel members for a channel
   static async fetchChannelMembers(channelId: string): Promise<APIResponse<ChannelMember[]>> {
     try {
-      const query = supabase
+      const { data, error } = await supabase
         .from('channel_members')
         .select('*')
         .eq('channel_id', channelId)
         .order('joined_at', { ascending: true });
-      const { data, error } = await query;
 
       if (error) throw error;
 
@@ -279,7 +282,7 @@ export class SlackAPI {
   // Fetch channels that a user is a member of
   static async fetchUserChannels(userId: string): Promise<APIResponse<Channel[]>> {
     try {
-      const query = supabase
+      const { data, error } = await supabase
         .from('channel_members')
         .select(`
           channels (
@@ -300,7 +303,6 @@ export class SlackAPI {
           )
         `)
         .eq('user_id', userId);
-      const { data, error } = await query;
 
       if (error) throw error;
 
@@ -317,7 +319,7 @@ export class SlackAPI {
   // Fetch messages with user and channel information (with joins)
   static async fetchMessagesWithDetails(channelId: string, limit: number = 50): Promise<APIResponse<any[]>> {
     try {
-      const builder: any = supabase
+      const { data, error } = await supabase
         .from('messages')
         .select(`
           *,
@@ -333,8 +335,7 @@ export class SlackAPI {
             name,
             is_private
           )
-        `);
-      const { data, error } = await builder
+        `)
         .eq('channel_id', channelId)
         .order('created_at', { ascending: false })
         .limit(limit);
@@ -556,21 +557,54 @@ export class SlackAPI {
   static async getPodcastData(exportPath: string, weekString: string): Promise<APIResponse<any>> {
     try {
       if (exportPath) {
-        // Derive a short narrative from insights for the "episode"
+        const teamHealth = await calculateTeamHealthFromRealData(exportPath, weekString);
         const insights = await generateLabfoxSpecificInsights(exportPath, weekString);
+        const recommendations = await generateLabfoxSpecificRecommendations(exportPath, weekString, teamHealth, insights);
+
+        const payload = {
+          weekIdentifier: weekString,
+          primaryTheme: insights[0]?.title || 'Key weekly developments',
+          analyticsData: {
+            keyMetrics: insights.slice(0, 2).map(p => ({ name: p.title, value: p.metric, trend: p.trend, comparison: "last week" })),
+            anomaly: insights.find(p => p.severity === 'critical')?.title || "No major anomalies",
+            funnelPerformance: "Conversion rates stable, with a slight drop-off at the final stage.",
+          },
+          slackData: {
+            trendingTopic: insights.find(p => p.category === 'communication')?.title || "Project discussions",
+            keyDecision: "Decision to adopt new async communication guidelines.",
+            teamSentiment: "Overall sentiment is positive, with some concerns about workload.",
+            crossTeamCollaboration: "Increased collaboration between Engineering and Product teams.",
+          },
+          recommendations: {
+            recommendation1: recommendations[0]?.title || "Continue monitoring team health.",
+            recommendation2: recommendations[1]?.title || "Review workload distribution.",
+          },
+          whitePaper: getWhitePaperContext(),
+        };
+
+        const script = generatePodcastScript(payload);
+        
         const summary = insights.slice(0, 3).map(i => `${i.title}: ${i.description}`).join(' ');
-        const mockLike = {
+        
+        const podcastData = {
           episode: {
-            title: 'Weekly Team Signals',
+            title: 'Labfox Weekly Pulse',
             date: weekString,
-            duration: '8 min',
-            summary,
+            duration: '5 min',
+            summary: summary,
+            script: script,
             status: 'new'
           },
-          recent: []
+          recent: [
+            { title: 'Communication Optimization', date: '2025-W27', duration: '5 min' },
+            { title: 'Growth Phase Management', date: '2025-W26', duration: '5 min' },
+            { title: 'Team Integration Success', date: '2025-W25', duration: '5 min' }
+          ]
         };
-        return { success: true, data: mockLike };
+
+        return { success: true, data: podcastData };
       }
+      
       // Fallback stub
       const mockPodcastData = {
         episode: {
