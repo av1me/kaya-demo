@@ -8,6 +8,7 @@ import { useState, useEffect, useRef } from "react";
 import { format, isSameWeek, subWeeks, startOfWeek } from "date-fns";
 import { SlackAPI } from "@/lib/api";
 import { generateAudio } from "@/lib/elevenLabs";
+import { getWeekStringFromDate, getMostRecentWeekWithData, parseWeekString } from "@/lib/slackDataUtils";
 
 interface PodcastSectionProps {
   selectedWeek: Date;
@@ -24,9 +25,9 @@ export const PodcastSection = ({
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [script, setScript] = useState<string | null>(null);
   const [isScriptDialogOpen, setIsScriptDialogOpen] = useState(false);
-  const currentWeek = startOfWeek(new Date('2025-06-23'), {
-    weekStartsOn: 1
-  });
+  // Derive current week from available Slack data for accuracy
+  const mostRecentWeekString = getMostRecentWeekWithData();
+  const currentWeek = startOfWeek(parseWeekString(mostRecentWeekString), { weekStartsOn: 1 });
   const isCurrentWeek = isSameWeek(selectedWeek, currentWeek, {
     weekStartsOn: 1
   });
@@ -40,7 +41,7 @@ export const PodcastSection = ({
       setIsLoadingPodcast(true);
       try {
         const exportPath = '/slack-export/Labfox Slack export Jun 18 2025 - Jul 18 2025';
-        const weekString = `${selectedWeek.getFullYear()}-W${Math.ceil((selectedWeek.getTime() - new Date(selectedWeek.getFullYear(), 0, 1).getTime()) / (7 * 24 * 60 * 60 * 1000))}`;
+        const weekString = getWeekStringFromDate(selectedWeek);
         
         const response = await SlackAPI.getPodcastData(exportPath, weekString);
         if (response.success && response.data) {
@@ -213,8 +214,14 @@ export const PodcastSection = ({
                 className="flex items-center justify-between py-1.5 hover:bg-accent/50 rounded-2xl px-2 -mx-2 cursor-pointer transition-colors"
                 onClick={() => {
                   if (onWeekChange) {
-                    const episodeWeek = startOfWeek(subWeeks(currentWeek, index + 1), { weekStartsOn: 1 });
-                    onWeekChange(episodeWeek);
+                    // Prefer navigating by episode.date if it's a week string like YYYY-WNN
+                    const maybeWeekString = episode?.date as string | undefined;
+                    if (maybeWeekString && /\d{4}-W\d{2}/.test(maybeWeekString)) {
+                      onWeekChange(parseWeekString(maybeWeekString));
+                    } else {
+                      const episodeWeek = startOfWeek(subWeeks(currentWeek, index + 1), { weekStartsOn: 1 });
+                      onWeekChange(episodeWeek);
+                    }
                   }
                 }}
               >
