@@ -7,8 +7,7 @@ import { Play, Pause, Volume2, Calendar, Info, FileText } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { format, isSameWeek, subWeeks, startOfWeek } from "date-fns";
 import { SlackAPI } from "@/lib/api";
-import { generateAudio } from "@/lib/elevenLabs";
-import { getWeekStringFromDate, getMostRecentWeekWithData, parseWeekString } from "@/lib/slackDataUtils";
+import { generateAudio, testElevenLabsConnection, generateSampleAudio } from "@/lib/elevenLabs";
 
 interface PodcastSectionProps {
   selectedWeek: Date;
@@ -25,9 +24,10 @@ export const PodcastSection = ({
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [script, setScript] = useState<string | null>(null);
   const [isScriptDialogOpen, setIsScriptDialogOpen] = useState(false);
-  // Derive current week from available Slack data for accuracy
-  const mostRecentWeekString = getMostRecentWeekWithData();
-  const currentWeek = startOfWeek(parseWeekString(mostRecentWeekString), { weekStartsOn: 1 });
+  const [apiKeyStatus, setApiKeyStatus] = useState<'checking' | 'available' | 'missing'>('checking');
+  const currentWeek = startOfWeek(new Date('2025-06-23'), {
+    weekStartsOn: 1
+  });
   const isCurrentWeek = isSameWeek(selectedWeek, currentWeek, {
     weekStartsOn: 1
   });
@@ -41,7 +41,7 @@ export const PodcastSection = ({
       setIsLoadingPodcast(true);
       try {
         const exportPath = '/slack-export/Labfox Slack export Jun 18 2025 - Jul 18 2025';
-        const weekString = getWeekStringFromDate(selectedWeek);
+        const weekString = `${selectedWeek.getFullYear()}-W${Math.ceil((selectedWeek.getTime() - new Date(selectedWeek.getFullYear(), 0, 1).getTime()) / (7 * 24 * 60 * 60 * 1000))}`;
         
         const response = await SlackAPI.getPodcastData(exportPath, weekString);
         if (response.success && response.data) {
@@ -65,6 +65,15 @@ export const PodcastSection = ({
       setScript(null);
     }
   }, [podcastData]);
+
+  // Check ElevenLabs API key status on component mount
+  useEffect(() => {
+    const checkApiKey = async () => {
+      const isAvailable = await testElevenLabsConnection();
+      setApiKeyStatus(isAvailable ? 'available' : 'missing');
+    };
+    checkApiKey();
+  }, []);
 
   // Safety check to prevent undefined errors
   if (isLoadingPodcast) {
@@ -148,6 +157,7 @@ export const PodcastSection = ({
                     setIsPlaying(true);
                   } else if (script && !isGeneratingAudio) {
                     setIsGeneratingAudio(true);
+                    console.log("🎙️ Starting audio generation for week:", selectedWeek);
                     const audioBlob = await generateAudio(script);
                     if (audioBlob) {
                       const url = URL.createObjectURL(audioBlob);
@@ -155,12 +165,16 @@ export const PodcastSection = ({
                       audioRef.current = new Audio(url);
                       audioRef.current.play();
                       setIsPlaying(true);
+                      console.log("✅ Audio playback started successfully");
+                    } else {
+                      console.error("❌ Failed to generate audio");
                     }
                     setIsGeneratingAudio(false);
                   }
                 }
               }}
-              disabled={isGeneratingAudio}
+              disabled={isGeneratingAudio || apiKeyStatus === 'missing'}
+              title={apiKeyStatus === 'missing' ? 'ElevenLabs API key required for audio' : 'Play podcast'}
             >
               {isGeneratingAudio ? (
                 <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
@@ -174,6 +188,11 @@ export const PodcastSection = ({
               <Button size="icon" className="rounded-full bg-white/20 hover:bg-white/30 text-white" onClick={() => setIsScriptDialogOpen(true)}>
                 <FileText className="w-4 h-4" />
               </Button>
+            )}
+            {apiKeyStatus === 'missing' && (
+              <div className="text-xs text-yellow-300 bg-yellow-900/20 px-2 py-1 rounded">
+                API Key Missing
+              </div>
             )}
             <div className="flex-1">
               <h3 className="font-semibold text-lg text-white">{currentEpisode.title}</h3>
@@ -202,6 +221,18 @@ export const PodcastSection = ({
           <p className="text-sm text-muted-foreground leading-relaxed">
             {currentEpisode.summary}
           </p>
+          {apiKeyStatus === 'missing' && (
+            <div className="mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
+              <p className="text-sm text-yellow-800 mb-2">
+                <strong>Audio Generation Disabled:</strong> ElevenLabs API key not found.
+              </p>
+              <p className="text-xs text-yellow-700">
+                To enable audio playback, set your ElevenLabs API key:
+                <br />
+                <code className="bg-yellow-100 px-1 rounded">export VITE_ELEVENLABS_API_KEY="your_api_key_here"</code>
+              </p>
+            </div>
+          )}
         </div>
 
         {/* Recent Episodes */}
@@ -214,14 +245,8 @@ export const PodcastSection = ({
                 className="flex items-center justify-between py-1.5 hover:bg-accent/50 rounded-2xl px-2 -mx-2 cursor-pointer transition-colors"
                 onClick={() => {
                   if (onWeekChange) {
-                    // Prefer navigating by episode.date if it's a week string like YYYY-WNN
-                    const maybeWeekString = episode?.date as string | undefined;
-                    if (maybeWeekString && /\d{4}-W\d{2}/.test(maybeWeekString)) {
-                      onWeekChange(parseWeekString(maybeWeekString));
-                    } else {
-                      const episodeWeek = startOfWeek(subWeeks(currentWeek, index + 1), { weekStartsOn: 1 });
-                      onWeekChange(episodeWeek);
-                    }
+                    const episodeWeek = startOfWeek(subWeeks(currentWeek, index + 1), { weekStartsOn: 1 });
+                    onWeekChange(episodeWeek);
                   }
                 }}
               >
