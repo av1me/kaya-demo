@@ -3,11 +3,13 @@ import { Button } from "@/components/ui/button";
 import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
-import { Play, Pause, Volume2, Calendar, Info, FileText } from "lucide-react";
+import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
+import { Play, Pause, Volume2, Calendar, Info, FileText, Settings } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { format, isSameWeek, subWeeks, startOfWeek } from "date-fns";
 import { SlackAPI } from "@/lib/api";
 import { generateAudio } from "@/lib/elevenLabs";
+import { ScriptTemplate, getAvailableTemplates } from "@/lib/podcastGenerator";
 
 interface PodcastSectionProps {
   selectedWeek: Date;
@@ -21,6 +23,7 @@ export const PodcastSection = ({
   const [isPlaying, setIsPlaying] = useState(false);
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [isGeneratingAudio, setIsGeneratingAudio] = useState(false);
+  const [selectedTemplate, setSelectedTemplate] = useState<ScriptTemplate>(ScriptTemplate.EXECUTIVE);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [script, setScript] = useState<string | null>(null);
   const [isScriptDialogOpen, setIsScriptDialogOpen] = useState(false);
@@ -126,6 +129,32 @@ export const PodcastSection = ({
             <CardDescription className="mt-2">
               Your personalized organizational health insights
             </CardDescription>
+          </div>
+          
+          {/* Template Selector */}
+          <div className="flex items-center gap-2">
+            <TooltipProvider>
+              <Tooltip>
+                <TooltipTrigger asChild>
+                  <Settings className="w-4 h-4 text-muted-foreground" />
+                </TooltipTrigger>
+                <TooltipContent>
+                  <p>Choose podcast script style</p>
+                </TooltipContent>
+              </Tooltip>
+            </TooltipProvider>
+            <Select value={selectedTemplate} onValueChange={(value) => setSelectedTemplate(value as ScriptTemplate)}>
+              <SelectTrigger className="w-40">
+                <SelectValue placeholder="Script Style" />
+              </SelectTrigger>
+              <SelectContent>
+                {getAvailableTemplates().map((template) => (
+                  <SelectItem key={template.value} value={template.value}>
+                    {template.label}
+                  </SelectItem>
+                ))}
+              </SelectContent>
+            </Select>
           </div>
         </div>
       </CardHeader>

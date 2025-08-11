@@ -11,7 +11,7 @@ import {
 } from './analytics';
 // Recommendation engine
 import { generateLabfoxSpecificRecommendations } from './recommendationEngine';
-import { generatePodcastScript } from './podcastGenerator';
+import { generatePodcastScript, ScriptTemplate } from './podcastGenerator';
 
 // Helper function to get white paper context
 const getWhitePaperContext = () => {
@@ -582,7 +582,7 @@ export class SlackAPI {
           whitePaper: getWhitePaperContext(),
         };
 
-        const script = generatePodcastScript(payload);
+        const script = generatePodcastScript(payload, ScriptTemplate.EXECUTIVE);
         
         const summary = insights.slice(0, 3).map(i => `${i.title}: ${i.description}`).join(' ');
         
