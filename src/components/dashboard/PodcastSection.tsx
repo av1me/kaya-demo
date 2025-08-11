@@ -4,7 +4,8 @@ import { Badge } from "@/components/ui/badge";
 import { Tooltip, TooltipContent, TooltipProvider, TooltipTrigger } from "@/components/ui/tooltip";
 import { AlertDialog, AlertDialogAction, AlertDialogCancel, AlertDialogContent, AlertDialogDescription, AlertDialogFooter, AlertDialogHeader, AlertDialogTitle, AlertDialogTrigger } from "@/components/ui/alert-dialog";
 import { Select, SelectContent, SelectItem, SelectTrigger, SelectValue } from "@/components/ui/select";
-import { Play, Pause, Volume2, Calendar, Info, FileText, Settings } from "lucide-react";
+import { Slider } from "@/components/ui/slider";
+import { Play, Pause, Volume2, Calendar, Info, FileText, Settings, SkipBack, SkipForward, RotateCcw } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { format, isSameWeek, subWeeks, startOfWeek } from "date-fns";
 import { SlackAPI } from "@/lib/api";
@@ -24,9 +25,17 @@ export const PodcastSection = ({
   const [audioUrl, setAudioUrl] = useState<string | null>(null);
   const [isGeneratingAudio, setIsGeneratingAudio] = useState(false);
   const [selectedTemplate, setSelectedTemplate] = useState<ScriptTemplate>(ScriptTemplate.EXECUTIVE);
+  const [currentTime, setCurrentTime] = useState(0);
+  const [duration, setDuration] = useState(0);
+  const [volume, setVolume] = useState(1);
+  const [isMuted, setIsMuted] = useState(false);
+  const [previousVolume, setPreviousVolume] = useState(1);
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [script, setScript] = useState<string | null>(null);
   const [isScriptDialogOpen, setIsScriptDialogOpen] = useState(false);
+  const [currentEpisode, setCurrentEpisode] = useState<any>(null);
+  const [recentEpisodes, setRecentEpisodes] = useState<any[]>([]);
+  
   const currentWeek = startOfWeek(new Date('2025-06-23'), {
     weekStartsOn: 1
   });
@@ -48,6 +57,9 @@ export const PodcastSection = ({
         const response = await SlackAPI.getPodcastData(exportPath, weekString);
         if (response.success && response.data) {
           setPodcastData(response.data);
+          setCurrentEpisode(response.data.episode);
+          setRecentEpisodes(response.data.recent);
+          setScript(response.data.episode.script);
         }
       } catch (error) {
         console.error('Error loading podcast data:', error);
@@ -60,13 +72,90 @@ export const PodcastSection = ({
     loadPodcastData();
   }, [selectedWeek]);
 
+  // Audio event handlers
   useEffect(() => {
-    if (podcastData && podcastData.episode) {
-      setScript(podcastData.episode.script);
-    } else {
-      setScript(null);
+    if (audioRef.current) {
+      const audio = audioRef.current;
+      
+      const updateTime = () => setCurrentTime(audio.currentTime);
+      const updateDuration = () => setDuration(audio.duration);
+      const handleEnded = () => setIsPlaying(false);
+      
+      audio.addEventListener('timeupdate', updateTime);
+      audio.addEventListener('loadedmetadata', updateDuration);
+      audio.addEventListener('ended', handleEnded);
+      
+      return () => {
+        audio.removeEventListener('timeupdate', updateTime);
+        audio.removeEventListener('loadedmetadata', updateDuration);
+        audio.removeEventListener('ended', handleEnded);
+      };
     }
-  }, [podcastData]);
+  }, [audioUrl]);
+
+  // Format time helper
+  const formatTime = (time: number) => {
+    const minutes = Math.floor(time / 60);
+    const seconds = Math.floor(time % 60);
+    return `${minutes}:${seconds.toString().padStart(2, '0')}`;
+  };
+
+  // Handle seek
+  const handleSeek = (value: number[]) => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = value[0];
+      setCurrentTime(value[0]);
+    }
+  };
+
+  // Handle volume change
+  const handleVolumeChange = (value: number[]) => {
+    const newVolume = value[0];
+    setVolume(newVolume);
+    if (audioRef.current) {
+      audioRef.current.volume = newVolume;
+    }
+    if (newVolume === 0) {
+      setIsMuted(true);
+    } else {
+      setIsMuted(false);
+    }
+  };
+
+  // Toggle mute
+  const toggleMute = () => {
+    if (isMuted) {
+      setVolume(previousVolume);
+      if (audioRef.current) {
+        audioRef.current.volume = previousVolume;
+      }
+      setIsMuted(false);
+    } else {
+      setPreviousVolume(volume);
+      setVolume(0);
+      if (audioRef.current) {
+        audioRef.current.volume = 0;
+      }
+      setIsMuted(true);
+    }
+  };
+
+  // Skip forward/backward
+  const skipTime = (seconds: number) => {
+    if (audioRef.current) {
+      audioRef.current.currentTime = Math.max(0, Math.min(audioRef.current.currentTime + seconds, duration));
+    }
+  };
+
+  // Reset audio when week changes
+  useEffect(() => {
+    if (audioRef.current) {
+      audioRef.current.pause();
+      setIsPlaying(false);
+      setCurrentTime(0);
+      setAudioUrl(null);
+    }
+  }, [selectedWeek]);
 
   // Safety check to prevent undefined errors
   if (isLoadingPodcast) {
@@ -100,9 +189,6 @@ export const PodcastSection = ({
       </Card>
     );
   }
-  
-  const currentEpisode = podcastData.episode;
-  const recentEpisodes = podcastData.recent;
 
   return (
     <Card className="shadow-card border-0 h-full rounded-3xl">
@@ -187,11 +273,9 @@ export const PodcastSection = ({
                   setIsPlaying(false);
                 } else {
                   if (audioUrl) {
-                    // Resume existing audio
                     audioRef.current?.play();
                     setIsPlaying(true);
                   } else if (script && !isGeneratingAudio) {
-                    // Generate new audio
                     console.log('🎙️ Starting audio generation for script:', script.substring(0, 100) + '...');
                     setIsGeneratingAudio(true);
                     
@@ -252,11 +336,13 @@ export const PodcastSection = ({
                 <Play className="w-4 h-4" />
               )}
             </Button>
+            
             {script && (
               <Button size="icon" className="rounded-full bg-white/20 hover:bg-white/30 text-white" onClick={() => setIsScriptDialogOpen(true)}>
                 <FileText className="w-4 h-4" />
               </Button>
             )}
+            
             <div className="flex-1">
               <h3 className="font-semibold text-lg text-white">{currentEpisode.title}</h3>
               <div className="flex items-center gap-4 text-sm text-muted-foreground">
@@ -267,15 +353,88 @@ export const PodcastSection = ({
                 <span className="text-gray-300">{currentEpisode.duration}</span>
               </div>
             </div>
-            <Button size="icon" variant="ghost" className="text-slate-50">
-              <Volume2 className="w-4 h-4" />
-            </Button>
           </div>
 
-          {/* Progress bar placeholder */}
-          <div className="w-full bg-white/20 rounded-full h-1 mb-4">
-            <div className="bg-white h-1 rounded-full w-1/3"></div>
-          </div>
+          {/* Audio Player Controls */}
+          {audioUrl && (
+            <div className="space-y-3">
+              {/* Progress Bar */}
+              <div className="w-full">
+                <Slider
+                  value={[currentTime]}
+                  max={duration}
+                  step={0.1}
+                  onValueChange={handleSeek}
+                  className="w-full"
+                />
+                <div className="flex justify-between text-xs text-white/80 mt-1">
+                  <span>{formatTime(currentTime)}</span>
+                  <span>{formatTime(duration)}</span>
+                </div>
+              </div>
+              
+              {/* Control Buttons */}
+              <div className="flex items-center justify-center gap-4">
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  className="text-white hover:bg-white/20"
+                  onClick={() => skipTime(-10)}
+                >
+                  <SkipBack className="w-4 h-4" />
+                </Button>
+                
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  className="text-white hover:bg-white/20"
+                  onClick={() => skipTime(10)}
+                >
+                  <SkipForward className="w-4 h-4" />
+                </Button>
+                
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  className="text-white hover:bg-white/20"
+                  onClick={() => {
+                    if (audioRef.current) {
+                      audioRef.current.currentTime = 0;
+                      setCurrentTime(0);
+                    }
+                  }}
+                >
+                  <RotateCcw className="w-4 h-4" />
+                </Button>
+              </div>
+              
+              {/* Volume Control */}
+              <div className="flex items-center gap-2">
+                <Button
+                  size="icon"
+                  variant="ghost"
+                  className="text-white hover:bg-white/20"
+                  onClick={toggleMute}
+                >
+                  <Volume2 className="w-4 h-4" />
+                </Button>
+                <Slider
+                  value={[isMuted ? 0 : volume]}
+                  max={1}
+                  step={0.01}
+                  onValueChange={handleVolumeChange}
+                  className="w-24"
+                />
+              </div>
+            </div>
+          )}
+
+          {/* Progress bar placeholder when no audio */}
+          {!audioUrl && (
+            <div className="w-full bg-white/20 rounded-full h-1 mb-4">
+              <div className="bg-white h-1 rounded-full w-1/3"></div>
+            </div>
+          )}
         </div>
 
         {/* Summary */}
