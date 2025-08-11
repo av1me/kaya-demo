@@ -7,7 +7,7 @@ import { Play, Pause, Volume2, Calendar, Info, FileText } from "lucide-react";
 import { useState, useEffect, useRef } from "react";
 import { format, isSameWeek, subWeeks, startOfWeek } from "date-fns";
 import { SlackAPI } from "@/lib/api";
-import { generateAudio, testElevenLabsConnection, generateSampleAudio } from "@/lib/elevenLabs";
+import { generateAudio } from "@/lib/elevenLabs";
 
 interface PodcastSectionProps {
   selectedWeek: Date;
@@ -24,7 +24,6 @@ export const PodcastSection = ({
   const audioRef = useRef<HTMLAudioElement | null>(null);
   const [script, setScript] = useState<string | null>(null);
   const [isScriptDialogOpen, setIsScriptDialogOpen] = useState(false);
-  const [apiKeyStatus, setApiKeyStatus] = useState<'checking' | 'available' | 'missing'>('checking');
   const currentWeek = startOfWeek(new Date('2025-06-23'), {
     weekStartsOn: 1
   });
@@ -65,15 +64,6 @@ export const PodcastSection = ({
       setScript(null);
     }
   }, [podcastData]);
-
-  // Check ElevenLabs API key status on component mount
-  useEffect(() => {
-    const checkApiKey = async () => {
-      const isAvailable = await testElevenLabsConnection();
-      setApiKeyStatus(isAvailable ? 'available' : 'missing');
-    };
-    checkApiKey();
-  }, []);
 
   // Safety check to prevent undefined errors
   if (isLoadingPodcast) {
@@ -143,6 +133,21 @@ export const PodcastSection = ({
       <CardContent className="space-y-6 bg-white rounded-3xl">
         {/* Current Episode */}
         <div className={`${isCurrentWeek ? 'bg-gradient-podcast' : 'bg-gradient-to-l from-slate-300 to-slate-400'} rounded-2xl p-6 py-[19px] px-[16px]`}>
+          {/* API Key Warning */}
+          {!import.meta.env.VITE_ELEVENLABS_API_KEY && (
+            <div className="mb-4 p-3 bg-yellow-500/20 border border-yellow-500/30 rounded-lg">
+              <p className="text-yellow-100 text-sm">
+                <strong>🔑 ElevenLabs API Key Required:</strong> To hear the podcast audio, set your API key:
+                <br />
+                <code className="bg-yellow-500/30 px-2 py-1 rounded text-xs">
+                  export VITE_ELEVENLABS_API_KEY="your_key_here"
+                </code>
+                <br />
+                Get your key from <a href="https://elevenlabs.io/" target="_blank" rel="noopener noreferrer" className="underline">elevenlabs.io</a>
+              </p>
+            </div>
+          )}
+          
           <div className="flex items-center gap-3 mb-4">
             <Button
               size="icon"
@@ -153,28 +158,62 @@ export const PodcastSection = ({
                   setIsPlaying(false);
                 } else {
                   if (audioUrl) {
+                    // Resume existing audio
                     audioRef.current?.play();
                     setIsPlaying(true);
                   } else if (script && !isGeneratingAudio) {
+                    // Generate new audio
+                    console.log('🎙️ Starting audio generation for script:', script.substring(0, 100) + '...');
                     setIsGeneratingAudio(true);
-                    console.log("🎙️ Starting audio generation for week:", selectedWeek);
-                    const audioBlob = await generateAudio(script);
-                    if (audioBlob) {
-                      const url = URL.createObjectURL(audioBlob);
-                      setAudioUrl(url);
-                      audioRef.current = new Audio(url);
-                      audioRef.current.play();
-                      setIsPlaying(true);
-                      console.log("✅ Audio playback started successfully");
-                    } else {
-                      console.error("❌ Failed to generate audio");
+                    
+                    try {
+                      const audioBlob = await generateAudio(script);
+                      if (audioBlob) {
+                        console.log('🎙️ Audio generated successfully, size:', audioBlob.size);
+                        const url = URL.createObjectURL(audioBlob);
+                        setAudioUrl(url);
+                        
+                        // Create new audio element and set up event handlers
+                        const audio = new Audio(url);
+                        audio.onloadedmetadata = () => {
+                          console.log('🎙️ Audio metadata loaded, duration:', audio.duration);
+                          audio.play().then(() => {
+                            setIsPlaying(true);
+                            console.log('🎙️ Audio playback started');
+                          }).catch(error => {
+                            console.error('🎙️ Audio playback failed:', error);
+                            setIsPlaying(false);
+                          });
+                        };
+                        
+                        audio.onerror = (error) => {
+                          console.error('🎙️ Audio error:', error);
+                          setIsPlaying(false);
+                        };
+                        
+                        audio.onended = () => {
+                          console.log('🎙️ Audio playback ended');
+                          setIsPlaying(false);
+                        };
+                        
+                        audioRef.current = audio;
+                      } else {
+                        console.error('🎙️ Failed to generate audio blob');
+                        alert('Failed to generate audio. Please check your ElevenLabs API key.');
+                      }
+                    } catch (error) {
+                      console.error('🎙️ Audio generation error:', error);
+                      alert('Error generating audio: ' + (error as Error).message);
+                    } finally {
+                      setIsGeneratingAudio(false);
                     }
-                    setIsGeneratingAudio(false);
+                  } else if (!script) {
+                    console.error('🎙️ No script available for audio generation');
+                    alert('No podcast script available for this week.');
                   }
                 }
               }}
-              disabled={isGeneratingAudio || apiKeyStatus === 'missing'}
-              title={apiKeyStatus === 'missing' ? 'ElevenLabs API key required for audio' : 'Play podcast'}
+              disabled={isGeneratingAudio}
             >
               {isGeneratingAudio ? (
                 <div className="animate-spin rounded-full h-4 w-4 border-b-2 border-white"></div>
@@ -188,11 +227,6 @@ export const PodcastSection = ({
               <Button size="icon" className="rounded-full bg-white/20 hover:bg-white/30 text-white" onClick={() => setIsScriptDialogOpen(true)}>
                 <FileText className="w-4 h-4" />
               </Button>
-            )}
-            {apiKeyStatus === 'missing' && (
-              <div className="text-xs text-yellow-300 bg-yellow-900/20 px-2 py-1 rounded">
-                API Key Missing
-              </div>
             )}
             <div className="flex-1">
               <h3 className="font-semibold text-lg text-white">{currentEpisode.title}</h3>
@@ -221,18 +255,6 @@ export const PodcastSection = ({
           <p className="text-sm text-muted-foreground leading-relaxed">
             {currentEpisode.summary}
           </p>
-          {apiKeyStatus === 'missing' && (
-            <div className="mt-3 p-3 bg-yellow-50 border border-yellow-200 rounded-lg">
-              <p className="text-sm text-yellow-800 mb-2">
-                <strong>Audio Generation Disabled:</strong> ElevenLabs API key not found.
-              </p>
-              <p className="text-xs text-yellow-700">
-                To enable audio playback, set your ElevenLabs API key:
-                <br />
-                <code className="bg-yellow-100 px-1 rounded">export VITE_ELEVENLABS_API_KEY="your_api_key_here"</code>
-              </p>
-            </div>
-          )}
         </div>
 
         {/* Recent Episodes */}
